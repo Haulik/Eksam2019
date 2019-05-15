@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Model.Booking;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
     private static Logger logger = LoggerFactory.getLogger(MainController.class);
+    private Booking booking;
 
     @Autowired
     MyAccessDeniedHandler myAccessDeniedHandler;
