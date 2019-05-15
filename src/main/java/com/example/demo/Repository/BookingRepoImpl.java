@@ -68,11 +68,11 @@ public class BookingRepoImpl implements BookingRepo {
 
                         LocalDateTime bookingStartDT = LocalDateTime.parse(bookingStart, formatter);
                         LocalDateTime bookingEndDT = LocalDateTime.parse(bookingEnd, formatter);
-                        // cast string state til state
-                        State castState = new State();
-                        if(state == "available"){ castState.setState("availablie");}
 
-                        allBookings.add(new Booking(id, bookingStartDT, bookingEndDT, castState, name, adresse, mail, phone, size));
+
+
+
+                        allBookings.add(new Booking(id, bookingStartDT, bookingEndDT, state, name, adresse, mail, phone, size));
 
 
                     }
@@ -83,16 +83,91 @@ public class BookingRepoImpl implements BookingRepo {
 
 
     }
+
+    public List<Booking> byResultSet(String sql){
+
+        return this.template.query(sql, new ResultSetExtractor<List<Booking>>() {
+            @Override
+            public List<Booking> extractData(ResultSet rs) throws SQLException, DataAccessException {
+                int id;
+                String name, adresse, mail, bookingStart, bookingEnd, state;
+                int phone, size;
+
+                ArrayList<Booking> bookings = new ArrayList<>();
+
+                while (rs.next()){
+                    id = rs.getInt("idBooking");
+                    bookingStart = rs.getString("bookStart");
+                    bookingEnd = rs.getString("bookEnd");
+                    state = rs.getString("bookState");
+                    name = rs.getString("bookerName");
+                    adresse = rs.getString("bookerAdresse");
+                    mail = rs.getString("bookerMail");
+                    phone = rs.getInt("bookerPhone");
+                    size = rs.getInt("bookerSize");
+
+                    // cast string til localDateTime
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+                    LocalDateTime bookingStartDT = LocalDateTime.parse(bookingStart, formatter);
+                    LocalDateTime bookingEndDT = LocalDateTime.parse(bookingEnd, formatter);
+
+
+                    bookings.add(new Booking(id, bookingStartDT, bookingEndDT, state, name, adresse, mail, phone, size));
+
+
+                }
+
+                return bookings;
+            }
+        });
+    }
+
+
     public List<Booking> getAllWithVariants(String variant){
-        String sql = "SELECT * FROM gulv.visit WHERE bookState = ?";
 
-        RowMapper<Booking> rm = new BeanPropertyRowMapper<>(Booking.class);
+        String sqlTo = "\'"+variant+"\'";
 
-
-        List<Booking> availableBookings = template.query(sql, rm, variant);
+        String sql = "SELECT * FROM gulv.visit WHERE bookState = "+sqlTo;
 
 
-        return availableBookings;
+        return this.template.query(sql, new ResultSetExtractor<List<Booking>>() {
+            @Override
+            public List<Booking> extractData(ResultSet rs) throws SQLException, DataAccessException {
+                int id;
+                String name, adresse, mail, bookingStart, bookingEnd, state;
+                int phone, size;
+
+                ArrayList<Booking> bookings = new ArrayList<>();
+
+                while (rs.next()){
+                    id = rs.getInt("idBooking");
+                    bookingStart = rs.getString("bookStart");
+                    bookingEnd = rs.getString("bookEnd");
+                    state = rs.getString("bookState");
+                    name = rs.getString("bookerName");
+                    adresse = rs.getString("bookerAdresse");
+                    mail = rs.getString("bookerMail");
+                    phone = rs.getInt("bookerPhone");
+                    size = rs.getInt("bookerSize");
+
+                    // cast string til localDateTime
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+                    LocalDateTime bookingStartDT = LocalDateTime.parse(bookingStart, formatter);
+                    LocalDateTime bookingEndDT = LocalDateTime.parse(bookingEnd, formatter);
+
+                    bookings.add(new Booking(id, bookingStartDT, bookingEndDT, state, name, adresse, mail, phone, size));
+
+
+                }
+
+                return bookings;
+            }
+        });
+
+
+
     }
 
     @Override
@@ -115,7 +190,7 @@ public class BookingRepoImpl implements BookingRepo {
     }
 
     @Override
-    public State cancelBooking(int id) {
+    public String cancelBooking(int id) {
 
         String sql = "UPDATE gulv.visit SET bookState = 'available' WHERE idBooking =?";
 
@@ -142,5 +217,22 @@ public class BookingRepoImpl implements BookingRepo {
 
         Booking searched = template.queryForObject(sql, rm, name);
         return searched;
+    }
+
+    @Override
+    public Booking getBookingById(int id) {
+
+        String sql = "SELECT * FROM gulv.visit where idBooking = ?";
+        RowMapper<Booking> rm = new BeanPropertyRowMapper<>(Booking.class);
+
+        Booking searched = template.queryForObject(sql, rm, id);
+        return searched;
+    }
+
+    @Override
+    public void book(Booking booking, int id){
+
+        String sql ="UPDATE gulv.visit SET (bookState, bookerName, bookerAdresse, bookerMail, bookerPhone, bookerSize) VALUES('booked', ?, ?, ?, ?, ?) WHERE idBookings = ?";
+        this.template.update(sql, booking.getName(), booking.getAdresse(), booking.getMail(), booking.getTelefon(), booking.getKvdm(), id);
     }
 }

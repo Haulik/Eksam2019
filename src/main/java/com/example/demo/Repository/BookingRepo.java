@@ -12,8 +12,10 @@ public interface BookingRepo {
     List<Booking> getAllAvailable();
     List<Booking> getAllConfirmed();
     List<Booking> getAllBooked();
-    State cancelBooking(int id);
+    String cancelBooking(int id);
     int deleteBooking(int id);
     Booking getBookingByName(String name);
+    Booking getBookingById(int id);
+    void book(Booking booking, int id);
 
 }

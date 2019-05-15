@@ -11,12 +11,14 @@ public class Booking {
     private int id;
     private LocalDateTime bookingStart;
     private LocalDateTime bookingEnd;
-    private State status;
+    private String status;
     private String name;
     private String adresse;
     private String mail;
+    private int telefon;
+    private int kvdm;
 
-    public Booking(int id, LocalDateTime bookingStart, LocalDateTime bookingEnd, State status, String name, String adresse, String mail, int telefon, int kvdm) {
+    public Booking(int id, LocalDateTime bookingStart, LocalDateTime bookingEnd, String status, String name, String adresse, String mail, int telefon, int kvdm) {
         this.id = id;
         this.bookingStart = bookingStart;
         this.bookingEnd = bookingEnd;
@@ -33,8 +35,7 @@ public class Booking {
 
 
 
-    private int telefon;
-    private int kvdm;
+
 
     public Booking(String name) {
         this.bookingStart = LocalDateTime.now().withNano(0);
@@ -45,7 +46,7 @@ public class Booking {
     public Booking(LocalDateTime bookingStart, LocalDateTime bookingEnd) {
         this.bookingStart = bookingStart;
         this.bookingEnd = bookingEnd;
-        this.status.setAvailable();
+        this.status = "available";
 
     }
 
@@ -87,7 +88,7 @@ public class Booking {
     }
 
     public void setBookingStart(LocalDateTime bookingStart) {
-        this.bookingStart = bookingStart;
+        this.bookingStart = bookingStart.withNano(0);
     }
 
     public LocalDateTime getBookingEnd() {
@@ -95,14 +96,14 @@ public class Booking {
     }
 
     public void setBookingEnd(LocalDateTime bookingEnd) {
-        this.bookingEnd = bookingEnd;
+        this.bookingEnd = bookingEnd.withNano(0);
     }
 
-    public State getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(State status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

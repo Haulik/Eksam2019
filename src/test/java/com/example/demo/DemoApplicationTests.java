@@ -47,11 +47,11 @@ public class DemoApplicationTests {
     }
 
     //tester for at man ikke kan komme på admin
-    @Test
-    public void admin() throws Exception{
-        assertEquals("/admin", mainController.admin() );
-        assertNotEquals(myAccessDeniedHandler.getAuth() !=null, mainController.admin());
-    }
+    //@Test
+    //public void admin() throws Exception{
+    //    assertEquals("/admin", mainController.admin() );
+    //    assertNotEquals(myAccessDeniedHandler.getAuth() !=null, mainController.admin());
+    //}
 
     @Test
     public void createBooking() {
