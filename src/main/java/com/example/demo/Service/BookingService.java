@@ -18,4 +18,5 @@ public interface BookingService {
     void bookTime(Booking booking, int id) throws SQLException;
     void confirm(int id);
     Booking getBookingById(int id) throws SQLException;
+    void cancel(int id) throws SQLException;
 }

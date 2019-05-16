@@ -58,6 +58,10 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public Booking getBookingById(int id) throws SQLException{
         return bookingRepo.getBookingById(id).get(0);
+    }
 
+    @Override
+    public void cancel(int id) throws SQLException {
+        bookingRepo.cancelBooking(id);
     }
 }

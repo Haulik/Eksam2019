@@ -148,6 +148,18 @@ public class MainController {
         return "redirect:/admin";
     }
 
+    @GetMapping("/cancel/{id}")
+    public String cancel(@PathVariable("id") int idForCancel)throws SQLException, AddressException, MessagingException, IOException {
+
+        bookingService.cancel(idForCancel);
+        logger.info(idForCancel+" has been cancled, such a shame");
+
+        //MANLGER FIX PÅ REDIRECT
+        // EVT LAV OM PÅ BOOKINGSERVICE SÅ DEN RETURNERE STRING "REDIRECT:/CANCELSUCCESS/
+
+        return "redirect:/cancelSuccess/{id}";
+    }
+
 
 
 

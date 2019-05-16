@@ -124,13 +124,12 @@ public class BookingRepoImpl implements BookingRepo {
     }
 
     @Override
-    public String cancelBooking(int id) throws SQLException {
+    public void cancelBooking(int id) throws SQLException {
 
-        String sql = "UPDATE gulv.visit SET bookState = 'available' WHERE idBooking =?";
+        String sql = "UPDATE gulv.visit SET bookState = ?  WHERE idBooking =?";
 
-        this.template.update(sql, id);
-
-        return getAllBooking().get(id-1).getStatus();
+        String ava = "available";
+        this.template.update(sql, ava, id);
     }
 
     @Override

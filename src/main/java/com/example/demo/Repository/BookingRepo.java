@@ -12,7 +12,7 @@ public interface BookingRepo {
     List<Booking> getAllAvailable() throws SQLException;
     List<Booking> getAllConfirmed() throws SQLException;
     List<Booking> getAllBooked() throws SQLException;
-    String cancelBooking(int id) throws SQLException;
+    void cancelBooking(int id) throws SQLException;
     int deleteBooking(int id);
     List<Booking> getBookingByName(String name) throws SQLException;
     List<Booking> getBookingById(int id) throws SQLException;
