@@ -61,14 +61,14 @@ public class BookingRepoImpl implements BookingRepo {
                         size = rs.getInt("bookerSize");
 
                         // cast string til localDateTime
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 
                         LocalDateTime bookingStartDT = LocalDateTime.parse(bookingStart, formatter);
-                        String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingStartDT));
+                        String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(bookingStartDT));
 
 
                         LocalDateTime bookingEndDT = LocalDateTime.parse(bookingEnd, formatter);
-                        String endFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingEndDT));
+                        String endFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(bookingEndDT));
 
 
 
@@ -108,13 +108,13 @@ public class BookingRepoImpl implements BookingRepo {
                     size = rs.getInt("bookerSize");
 
                     // cast string til localDateTime
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 
                     LocalDateTime bookingStartDT = LocalDateTime.parse(bookingStart, formatter);
-                    String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingStartDT));
+                    String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(bookingStartDT));
 
                     LocalDateTime bookingEndDT = LocalDateTime.parse(bookingEnd, formatter);
-                    String endFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingEndDT));
+                    String endFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(bookingEndDT));
 
 
                     bookings.add(new Booking(id, startFinal, endFinal, state, name, adresse, mail, phone, size));
@@ -156,13 +156,13 @@ public class BookingRepoImpl implements BookingRepo {
                     size = rs.getInt("bookerSize");
 
                     // cast string til localDateTime
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 
                     LocalDateTime bookingStartDT = LocalDateTime.parse(bookingStart, formatter);
-                    String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingStartDT));
+                    String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(bookingStartDT));
 
                     LocalDateTime bookingEndDT = LocalDateTime.parse(bookingEnd, formatter);
-                    String endFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingEndDT));
+                    String endFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(bookingEndDT));
 
                     bookings.add(new Booking(id, startFinal, endFinal, state, name, adresse, mail, phone, size));
 
@@ -244,13 +244,13 @@ public class BookingRepoImpl implements BookingRepo {
                     size = rs.getInt("bookerSize");
 
                     // cast string til localDateTime
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 
                     LocalDateTime bookingStartDT = LocalDateTime.parse(bookingStart, formatter);
-                    String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingStartDT));
+                    String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(bookingStartDT));
 
                     LocalDateTime bookingEndDT = LocalDateTime.parse(bookingEnd, formatter);
-                    String endFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingEndDT));
+                    String endFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(bookingEndDT));
 
                     bookings.add(new Booking(id, startFinal, endFinal, state, name, adresse, mail, phone, size));
 
@@ -293,13 +293,13 @@ public class BookingRepoImpl implements BookingRepo {
                     size = rs.getInt("bookerSize");
 
                     // cast string til localDateTime
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 
                     LocalDateTime bookingStartDT = LocalDateTime.parse(bookingStart, formatter);
-                    String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingStartDT));
+                    String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(bookingStartDT));
 
                     LocalDateTime bookingEndDT = LocalDateTime.parse(bookingEnd, formatter);
-                    String endFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingEndDT));
+                    String endFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(bookingEndDT));
 
                     bookings.add(new Booking(id, startFinal, endFinal, state, name, adresse, mail, phone, size));
 
