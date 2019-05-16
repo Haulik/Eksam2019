@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+</head>
+<body>
+
+
+
+<div class="container">
+
+
+
+    <div>
+        <form id="form" class="box2" th:action="@{/bookDetails}" th:object="${bookDetails}" method="post">
+            <h1>Create a booking!</h1>
+
+            <input type="text" name="booker name"  placeholder="Enter name" th:field="${booker.name}" required />
+            <input type="text" name="booker adresse"  placeholder="Enter your adresse" th:field="${booker.adresse}" required />
+            <input type="email" name="booker mail" placeholder="Enter your e-mail" th:field="${booker.mail}" required />
+            <input type="number" name="booker phone" placeholder="Enter your phone number" th:field="${booker.telefon}" required />
+            <input type="number" name="booker size"  placeholder="Enter the size of your project in m2" th:field="${booker.kvdm}" required />
+
+            <input onclick="Sure()" type="submit" name ="Submit" value="Submit" class="frontsize-l" id="submit-button"/>
+
+        </form>
+    </div>
+    </div>
+
+
+
+
+
+</body>
+</html>
