@@ -175,4 +175,13 @@ public class BookingRepoImpl implements BookingRepo {
 
         this.template.update(sql, booked, booking.getName(), booking.getAdresse(), booking.getMail(), booking.getTelefon(), booking.getKvdm(), id);
     }
+
+    @Override
+    public void confirm(int id){
+
+        String sql ="UPDATE gulv.visit SET bookState = ? WHERE idBooking = ?";
+        String confirmed = "confirmed";
+
+        this.template.update(sql, confirmed, id);
+    }
 }

@@ -11,6 +11,17 @@ import java.util.Properties;
 @Component
 public class Mailer {
 
+    public String mailTemplate(String name, String startTime, String endtime, int bookId){
+        String template = "Hej "+name+"\n\n" +
+                "Din booking af Steffen er nu blevet bekræftet.\n"+
+                "Bookingen forgår i tidsrummet: "+startTime+" - "+endtime+"\n"+
+                "Tak fordi du har booket hos Steffen!\n\n"+
+                "Såfremt du ønsker at aflyse din booking bedes du følge nedenstående link og og indtaste din unikke booking referance som er: "+bookId+"\n"+
+                "INDSÆT LINK TIL AFMELDING HER";
+
+        return template;
+    }
+
     public void sendmail(String to, String details) throws AddressException, MessagingException, IOException {
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -34,13 +45,14 @@ public class Mailer {
         MimeBodyPart messageBodyPart = new MimeBodyPart();
         messageBodyPart.setContent(details, "text/html");
 
-//        Multipart multipart = new MimeMultipart();
-//        multipart.addBodyPart(messageBodyPart);
-//        MimeBodyPart attachPart = new MimeBodyPart();
-//
-//        attachPart.attachFile("/var/tmp/image19.png");
-//        multipart.addBodyPart(attachPart);
-//        msg.setContent(multipart);
+
+        Multipart multipart = new MimeMultipart();
+        multipart.addBodyPart(messageBodyPart);
+        MimeBodyPart attachPart = new MimeBodyPart();
+
+        attachPart.attachFile("/var/tmp/image19.png");
+        multipart.addBodyPart(attachPart);
+        //msg.setContent(multipart);
         Transport.send(msg);
     }
 }

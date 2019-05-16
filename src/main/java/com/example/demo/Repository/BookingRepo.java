@@ -17,5 +17,6 @@ public interface BookingRepo {
     List<Booking> getBookingByName(String name) throws SQLException;
     List<Booking> getBookingById(int id) throws SQLException;
     void book(Booking booking, int id);
+    void confirm(int id);
 
 }

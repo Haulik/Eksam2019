@@ -16,4 +16,6 @@ public interface BookingService {
     List<Booking> getAllBooked() throws SQLException;
     List<Booking> getAllBooking() throws SQLException;
     void bookTime(Booking booking, int id) throws SQLException;
+    void confirm(int id);
+    Booking getBookingById(int id) throws SQLException;
 }

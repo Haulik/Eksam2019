@@ -46,6 +46,18 @@ public class BookingServiceImpl implements BookingService {
         if (bookingRepo.getBookingById(id).get(0).getStatus().equals("available")){
             bookingRepo.book(booking, id);
         }
+    }
+
+    @Override
+    public void confirm(int id){
+
+        /// LOGIC ???
+        bookingRepo.confirm(id);
+    }
+
+    @Override
+    public Booking getBookingById(int id) throws SQLException{
+        return bookingRepo.getBookingById(id).get(0);
 
     }
 }

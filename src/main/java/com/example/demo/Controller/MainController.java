@@ -131,6 +131,23 @@ public class MainController {
         return "redirect:/bookTime";
     }
 
+    @GetMapping("/confirm/{id}")
+    public String confirm(@PathVariable("id") int idForConfirm) throws SQLException, AddressException, MessagingException, IOException{
+
+        String to = bookingService.getBookingById(idForConfirm).getMail();
+        String name = bookingService.getBookingById(idForConfirm).getName();
+        String start = bookingService.getBookingById(idForConfirm).getBookingStart();
+        String end = bookingService.getBookingById(idForConfirm).getBookingEnd();
+
+        String context = mailer.mailTemplate(name, start, end, idForConfirm);
+
+        mailer.sendmail(to, context);
+        bookingService.confirm(idForConfirm);
+        logger.info("mail sent");
+
+        return "redirect:/admin";
+    }
+
 
 
 
