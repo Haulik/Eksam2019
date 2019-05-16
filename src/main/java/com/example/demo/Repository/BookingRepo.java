@@ -1,7 +1,6 @@
 package com.example.demo.Repository;
 
 import com.example.demo.Model.Booking;
-import com.example.demo.Model.State;
 
 import java.util.List;
 
@@ -14,8 +13,8 @@ public interface BookingRepo {
     List<Booking> getAllBooked();
     String cancelBooking(int id);
     int deleteBooking(int id);
-    Booking getBookingByName(String name);
-    Booking getBookingById(int id);
+    List<Booking> getBookingByName(String name);
+    List<Booking> getBookingById(int id);
     void book(Booking booking, int id);
 
 }

@@ -42,7 +42,7 @@ public class BookingServiceImpl implements BookingService {
     public void bookTime(Booking booking, int id){
 
         //sikre at den tid ikke allerede er blevet booket
-        if (bookingRepo.getBookingById(id).getStatus().equals("available")){
+        if (bookingRepo.getBookingById(id).get(0).getStatus().equals("available")){
             bookingRepo.book(booking, id);
         }
 
