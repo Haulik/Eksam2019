@@ -9,8 +9,8 @@ public class Booking {
 
 
     private int id;
-    private LocalDateTime bookingStart;
-    private LocalDateTime bookingEnd;
+    private String bookingStart;
+    private String bookingEnd;
     private String status;
     private String name;
     private String adresse;
@@ -18,7 +18,7 @@ public class Booking {
     private int telefon;
     private int kvdm;
 
-    public Booking(int id, LocalDateTime bookingStart, LocalDateTime bookingEnd, String status, String name, String adresse, String mail, int telefon, int kvdm) {
+    public Booking(int id, String  bookingStart, String bookingEnd, String status, String name, String adresse, String mail, int telefon, int kvdm) {
         this.id = id;
         this.bookingStart = bookingStart;
         this.bookingEnd = bookingEnd;
@@ -38,12 +38,12 @@ public class Booking {
 
 
     public Booking(String name) {
-        this.bookingStart = LocalDateTime.now().withNano(0);
-        this.bookingEnd = LocalDateTime.now().withNano(0);
+        this.bookingStart = LocalDateTime.now().withNano(0).toString();
+        this.bookingEnd = LocalDateTime.now().withNano(0).toString();
         this.name = name;
     }
 
-    public Booking(LocalDateTime bookingStart, LocalDateTime bookingEnd) {
+    public Booking(String bookingStart, String bookingEnd) {
         this.bookingStart = bookingStart;
         this.bookingEnd = bookingEnd;
         this.status = "available";
@@ -83,20 +83,20 @@ public class Booking {
         return kvdm;
     }
 
-    public LocalDateTime getBookingStart() {
+    public String getBookingStart() {
         return bookingStart;
     }
 
-    public void setBookingStart(LocalDateTime bookingStart) {
-        this.bookingStart = bookingStart.withNano(0);
+    public void setBookingStart(String bookingStart) {
+        this.bookingStart = bookingStart;
     }
 
-    public LocalDateTime getBookingEnd() {
+    public String  getBookingEnd() {
         return bookingEnd;
     }
 
-    public void setBookingEnd(LocalDateTime bookingEnd) {
-        this.bookingEnd = bookingEnd.withNano(0);
+    public void setBookingEnd(String bookingEnd) {
+        this.bookingEnd = bookingEnd;
     }
 
     public String getStatus() {

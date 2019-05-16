@@ -56,12 +56,18 @@ public class DemoApplicationTests {
     @Test
     public void createBooking() {
         bookingRepo.createBooking(new Booking("TestBook1"));
-        assertEquals("TestBook1", bookingRepo.getBookingByName("TestBook1"));
+        assertEquals("TestBook1", bookingRepo.getBookingByName("TestBook1").get(0).getName());
+
+    }
+
+    @Test
+    public void getBookingById(){
+        assertEquals("Tester-Egon", bookingRepo.getBookingById(1).get(0).getName());
     }
 
     @Test
     public void getAllBooking() {
-        assertEquals("Tester-Alf", bookingRepo.getAllBooking().get(0).getName());
+        assertEquals("Tester-Egon", bookingRepo.getAllBooking().get(0).getName());
     }
 
     @Test

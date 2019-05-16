@@ -61,6 +61,7 @@ public class MainController {
         model.addAttribute("allBookings", bookingService.getAllBooking());
 
 
+
         logger.info("admin page called by: "+myAccessDeniedHandler.getUserName());
         return "/admin";
     }
@@ -69,8 +70,10 @@ public class MainController {
     public String admin (@ModelAttribute Booking booking){
 
         // har bøvl med input typen ..........
+
         bookingService.createBooking(booking);
         logger.info("booking created - start time: "+booking.getBookingStart());
+
         return "redirect:/admin";
     }
 
@@ -97,6 +100,8 @@ public class MainController {
     @PostMapping("/bookDetails")
     public String bookDetails(@ModelAttribute Booking booking){
 
+
+        // ANDERS MANGLER
         bookingService.bookTime(booking, tempId);
 
         return "redirect:/bookTime";

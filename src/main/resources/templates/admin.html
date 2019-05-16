@@ -24,8 +24,8 @@
     <form id="form" class="box2" th:action="@{/admin}" th:object="${admin}" method="post">
         <h1>Create a booking!</h1>
 
-            <input type="datetime-local" name="booking Start" required placeholder="Start time of booking" th:field="${booking.bookingStart}"/>
-            <input type="datetime-local" name="booking end" required placeholder="End time of booking" th:field="${booking.bookingEnd}"/>
+            <input type="datetime-local" name="booking Start" required placeholder="Start time of booking yyyy-MM-DD hh:mm:ss" th:field="${booking.bookingStart}"/>
+            <input type="datetime-local" name="booking end" required placeholder="End time of booking yyyy-MM-dd hh:mm:ss" th:field="${booking.bookingEnd}"/>
             <input onclick="Sure()" type="submit" name ="Submit" value="Submit" class="frontsize-l" id="submit-button"/>
 
     </form>

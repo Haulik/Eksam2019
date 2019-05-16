@@ -1,14 +1,10 @@
 package com.example.demo.Repository;
 
 import com.example.demo.Model.Booking;
-import com.example.demo.Model.State;
-import com.sun.rowset.internal.Row;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
@@ -27,12 +23,13 @@ public class BookingRepoImpl implements BookingRepo {
     @Autowired
     JdbcTemplate template;
 
+
     @Override
     public void createBooking(Booking booking) {
 
-        String sql = "INSERT INTO gulv.visit (idBooking, bookStart, bookEnd, bookState) values(default, ?, ?, 'available')";
+        String sql = "INSERT INTO gulv.visit (idBooking, bookStart, bookEnd, bookerName, bookState) values(default, ?, ?, ?, 'available')";
 
-        this.template.update(sql, booking.getBookingStart(), booking.getBookingEnd());
+        this.template.update(sql, booking.getBookingStart(), booking.getBookingEnd(),booking.getName());
 
     }
 
@@ -67,12 +64,16 @@ public class BookingRepoImpl implements BookingRepo {
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
                         LocalDateTime bookingStartDT = LocalDateTime.parse(bookingStart, formatter);
+                        String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingStartDT));
+
+
                         LocalDateTime bookingEndDT = LocalDateTime.parse(bookingEnd, formatter);
+                        String endFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingEndDT));
 
 
 
 
-                        allBookings.add(new Booking(id, bookingStartDT, bookingEndDT, state, name, adresse, mail, phone, size));
+                        allBookings.add(new Booking(id, startFinal, endFinal, state, name, adresse, mail, phone, size));
 
 
                     }
@@ -110,10 +111,13 @@ public class BookingRepoImpl implements BookingRepo {
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
                     LocalDateTime bookingStartDT = LocalDateTime.parse(bookingStart, formatter);
+                    String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingStartDT));
+
                     LocalDateTime bookingEndDT = LocalDateTime.parse(bookingEnd, formatter);
+                    String endFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingEndDT));
 
 
-                    bookings.add(new Booking(id, bookingStartDT, bookingEndDT, state, name, adresse, mail, phone, size));
+                    bookings.add(new Booking(id, startFinal, endFinal, state, name, adresse, mail, phone, size));
 
 
                 }
@@ -155,9 +159,12 @@ public class BookingRepoImpl implements BookingRepo {
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
                     LocalDateTime bookingStartDT = LocalDateTime.parse(bookingStart, formatter);
-                    LocalDateTime bookingEndDT = LocalDateTime.parse(bookingEnd, formatter);
+                    String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingStartDT));
 
-                    bookings.add(new Booking(id, bookingStartDT, bookingEndDT, state, name, adresse, mail, phone, size));
+                    LocalDateTime bookingEndDT = LocalDateTime.parse(bookingEnd, formatter);
+                    String endFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingEndDT));
+
+                    bookings.add(new Booking(id, startFinal, endFinal, state, name, adresse, mail, phone, size));
 
 
                 }
@@ -209,30 +216,108 @@ public class BookingRepoImpl implements BookingRepo {
         return id;
     }
 
-    @Override
-    public Booking getBookingByName(String name) {
+    public List<Booking> getBookingById(int id){
 
-        String sql = "SELECT * FROM gulv.visit where bookerName = ?";
-        RowMapper<Booking> rm = new BeanPropertyRowMapper<>(Booking.class);
+        String sqlTo = "\'"+id+"\'";
 
-        Booking searched = template.queryForObject(sql, rm, name);
-        return searched;
+        String sql = "SELECT * FROM gulv.visit WHERE idBooking = "+sqlTo;
+
+
+        return this.template.query(sql, new ResultSetExtractor<List<Booking>>() {
+            @Override
+            public List<Booking> extractData(ResultSet rs) throws SQLException, DataAccessException {
+                int id;
+                String name, adresse, mail, bookingStart, bookingEnd, state;
+                int phone, size;
+
+                ArrayList<Booking> bookings = new ArrayList<>();
+
+                while (rs.next()){
+                    id = rs.getInt("idBooking");
+                    bookingStart = rs.getString("bookStart");
+                    bookingEnd = rs.getString("bookEnd");
+                    state = rs.getString("bookState");
+                    name = rs.getString("bookerName");
+                    adresse = rs.getString("bookerAdresse");
+                    mail = rs.getString("bookerMail");
+                    phone = rs.getInt("bookerPhone");
+                    size = rs.getInt("bookerSize");
+
+                    // cast string til localDateTime
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+                    LocalDateTime bookingStartDT = LocalDateTime.parse(bookingStart, formatter);
+                    String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingStartDT));
+
+                    LocalDateTime bookingEndDT = LocalDateTime.parse(bookingEnd, formatter);
+                    String endFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingEndDT));
+
+                    bookings.add(new Booking(id, startFinal, endFinal, state, name, adresse, mail, phone, size));
+
+
+                }
+
+                return bookings;
+            }
+        });
+
+
+
     }
 
-    @Override
-    public Booking getBookingById(int id) {
+    public List<Booking> getBookingByName(String name){
 
-        String sql = "SELECT * FROM gulv.visit where idBooking = ?";
-        RowMapper<Booking> rm = new BeanPropertyRowMapper<>(Booking.class);
+        String sqlTo = "\'"+name+"\'";
 
-        Booking searched = template.queryForObject(sql, rm, id);
-        return searched;
+        String sql = "SELECT * FROM gulv.visit WHERE bookerName = "+sqlTo;
+
+
+        return this.template.query(sql, new ResultSetExtractor<List<Booking>>() {
+            @Override
+            public List<Booking> extractData(ResultSet rs) throws SQLException, DataAccessException {
+                int id;
+                String name, adresse, mail, bookingStart, bookingEnd, state;
+                int phone, size;
+
+                ArrayList<Booking> bookings = new ArrayList<>();
+
+                while (rs.next()){
+                    id = rs.getInt("idBooking");
+                    bookingStart = rs.getString("bookStart");
+                    bookingEnd = rs.getString("bookEnd");
+                    state = rs.getString("bookState");
+                    name = rs.getString("bookerName");
+                    adresse = rs.getString("bookerAdresse");
+                    mail = rs.getString("bookerMail");
+                    phone = rs.getInt("bookerPhone");
+                    size = rs.getInt("bookerSize");
+
+                    // cast string til localDateTime
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+                    LocalDateTime bookingStartDT = LocalDateTime.parse(bookingStart, formatter);
+                    String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingStartDT));
+
+                    LocalDateTime bookingEndDT = LocalDateTime.parse(bookingEnd, formatter);
+                    String endFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingEndDT));
+
+                    bookings.add(new Booking(id, startFinal, endFinal, state, name, adresse, mail, phone, size));
+
+
+                }
+
+                return bookings;
+            }
+        });
+
+
+
     }
 
     @Override
     public void book(Booking booking, int id){
 
-        String sql ="UPDATE gulv.visit SET (bookState, bookerName, bookerAdresse, bookerMail, bookerPhone, bookerSize) VALUES('booked', ?, ?, ?, ?, ?) WHERE idBookings = ?";
+        String sql ="UPDATE gulv.visit SET(bookState, bookerName, bookerAdresse, bookerMail, bookerPhone, bookerSize) VALUES('booked', ?, ?, ?, ?, ?) WHERE idBookings = ?";
         this.template.update(sql, booking.getName(), booking.getAdresse(), booking.getMail(), booking.getTelefon(), booking.getKvdm(), id);
     }
 }
