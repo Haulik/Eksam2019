@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Config.Mail.Mailer;
 import com.example.demo.Model.Booking;
 import com.example.demo.Service.BookingService;
 import org.slf4j.Logger;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+import java.io.IOException;
 import java.sql.SQLException;
 
 
@@ -26,6 +30,8 @@ public class MainController {
     MyAccessDeniedHandler myAccessDeniedHandler;
     @Autowired
     BookingService bookingService;
+    @Autowired
+    Mailer mailer;
 
     @GetMapping("/")
     public String index() {
@@ -69,15 +75,13 @@ public class MainController {
     }
 
     @GetMapping("/admin")
-    public String admin(Model model) throws SQLException {
+    public String admin(Model model) throws SQLException, AddressException, MessagingException, IOException {
 
         model.addAttribute("booking", new Booking());
         model.addAttribute("allAvailable", bookingService.getAllAvailable());
         model.addAttribute("allConfirmed", bookingService.getAllConfirmed());
         model.addAttribute("allBooked", bookingService.getAllBooked());
         model.addAttribute("allBookings", bookingService.getAllBooking());
-
-
 
         logger.info("admin page called by: "+myAccessDeniedHandler.getUserName());
         return "admin";

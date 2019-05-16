@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.Config.WebSecurityConfig;
+import com.example.demo.Config.Security.WebSecurityConfig;
 import com.example.demo.Controller.MainController;
 import com.example.demo.Controller.MyAccessDeniedHandler;
 import com.example.demo.Model.Booking;
@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.SQLException;
