@@ -92,11 +92,22 @@ public class DemoApplicationTests {
         assertEquals("available", bookingRepo.cancelBooking(4).toString());
     }
 
-    @Test
-    public void deleteBooking() {
 
-        bookingRepo.deleteBooking(4);
-        assertEquals(4,bookingRepo.deleteBooking(4));
+
+    @Test
+    public void customerBook() throws SQLException{
+        Booking booking = new Booking();
+        booking.setStatus("booked");
+        bookingRepo.book(booking, bookingRepo.getBookingByName("TestBook1").get(0).getId());
+        assertEquals("booked", bookingRepo.getBookingByName("TestBook1").get(0).getStatus());
+    }
+
+    @Test
+    public void deleteBooking() throws SQLException{
+
+
+        bookingRepo.deleteBooking(bookingRepo.getBookingByName("TestBook1").get(0).getId());
+        assertEquals((bookingRepo.getBookingByName("TestBook1").get(0).getId()),bookingRepo.deleteBooking(bookingRepo.getBookingByName("TestBook1").get(0).getId()));
     }
 
     // test kvdrm pris

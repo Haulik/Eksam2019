@@ -64,7 +64,7 @@ public class Booking {
                 '}';
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

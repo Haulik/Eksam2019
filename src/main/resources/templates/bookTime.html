@@ -21,6 +21,9 @@
         <tr th:each="bookings: ${bookings}">
             <td th:text="${bookings.bookingStart}"/>
             <td th:hidden="${bookings.id}"/>
+            <td>
+                <a th:href="${'bookDetails/'+bookings.id}">Book this time!</a>
+            <td/>
         </tr>
 
         </tbody>
