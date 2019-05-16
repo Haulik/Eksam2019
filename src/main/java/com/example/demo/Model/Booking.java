@@ -2,7 +2,7 @@ package com.example.demo.Model;
 
 
 import java.time.LocalDateTime;
-
+import java.time.format.DateTimeFormatter;
 
 
 public class Booking {
@@ -38,8 +38,13 @@ public class Booking {
 
 
     public Booking(String name) {
-        this.bookingStart = LocalDateTime.now().withNano(0).toString();
-        this.bookingEnd = LocalDateTime.now().withNano(0).toString();
+
+
+        this.bookingStart = "2019-06-01 12:00:00";
+        this.bookingEnd = "2019-06-01 14:00:00";
+
+
+
         this.name = name;
     }
 
