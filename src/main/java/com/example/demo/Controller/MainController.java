@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.sql.SQLException;
+
 
 @org.springframework.stereotype.Controller
 public class MainController {
@@ -40,7 +42,7 @@ public class MainController {
     }
 
     @GetMapping("/AdminTest")
-    public String AdminTest(Model model) {
+    public String AdminTest(Model model) throws SQLException {
         model.addAttribute("booking", new Booking());
         model.addAttribute("allAvailable", bookingService.getAllAvailable());
         model.addAttribute("allConfirmed", bookingService.getAllConfirmed());
@@ -67,7 +69,7 @@ public class MainController {
     }
 
     @GetMapping("/admin")
-    public String admin(Model model){
+    public String admin(Model model) throws SQLException {
 
         model.addAttribute("booking", new Booking());
         model.addAttribute("allAvailable", bookingService.getAllAvailable());
@@ -93,7 +95,7 @@ public class MainController {
     }
 
     @GetMapping("/bookTime")
-    public String bookTime (Model model){
+    public String bookTime (Model model) throws SQLException {
 
         logger.info("bookTime called.");
 
@@ -113,7 +115,7 @@ public class MainController {
     }
 
     @PostMapping("/bookDetails")
-    public String bookDetails(@ModelAttribute Booking booking){
+    public String bookDetails(@ModelAttribute Booking booking) throws SQLException {
 
 
         // ANDERS MANGLER
