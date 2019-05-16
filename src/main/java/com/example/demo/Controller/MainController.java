@@ -108,8 +108,10 @@ public class MainController {
         model.addAttribute("booker", new Booking());
 
         tempId = idForBook;
+        logger.info("vi kom til: "+tempId);
+        logger.info("vi kom til idforbook: "+idForBook);
 
-        return "bookTime";
+        return "bookDetails";
     }
 
     @PostMapping("/bookDetails")
@@ -118,6 +120,7 @@ public class MainController {
 
         // ANDERS MANGLER
         bookingService.bookTime(booking, tempId);
+        logger.info("HUZZAAAA");
 
         return "redirect:/bookTime";
     }

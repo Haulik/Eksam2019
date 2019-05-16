@@ -317,7 +317,9 @@ public class BookingRepoImpl implements BookingRepo {
     @Override
     public void book(Booking booking, int id){
 
-        String sql ="UPDATE gulv.visit SET(bookState, bookerName, bookerAdresse, bookerMail, bookerPhone, bookerSize) VALUES('booked', ?, ?, ?, ?, ?) WHERE idBookings = ?";
-        this.template.update(sql, booking.getName(), booking.getAdresse(), booking.getMail(), booking.getTelefon(), booking.getKvdm(), id);
+        String sql ="UPDATE gulv.visit SET bookState = ?, bookerName = ?, bookerAdresse = ?, bookerMail = ?, bookerPhone = ?, bookerSize = ? WHERE idBooking = ?";
+        String booked = "booked";
+
+        this.template.update(sql, booked, booking.getName(), booking.getAdresse(), booking.getMail(), booking.getTelefon(), booking.getKvdm(), id);
     }
 }
