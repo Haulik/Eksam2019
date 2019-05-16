@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>Page Title</title>
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
@@ -8,16 +9,14 @@
 </head>
 
 <body>
-
+<form th:action="@{/login}" method="post">
 <div class="container">
     <div class="row">
         <div class="span12">
-            <form class="form-horizontal" action='' method="POST">
                 <fieldset>
                     <div id="legend">
                         <legend class="">Login</legend>
                     </div>
-                    <form th:action="@{/login}" method="post">
                     <div class="control-group">
                         <!-- Username -->
                         <label class="control-label"  >Username</label>
@@ -38,18 +37,25 @@
                             <button type="submit" class="btn btn-success">Login</button>
                         </div>
                     </div>
-                    </form>
+
                 </fieldset>
-            </form>
+
         </div>
     </div>
 </div>
 </form>
+
 <div th:if="${param.error}">
     Invalid username and password.
 </div>
 <div th:if="${param.logout}">
     You have been logged out.
 </div>
+
+
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
+
 </body>
 </html>
