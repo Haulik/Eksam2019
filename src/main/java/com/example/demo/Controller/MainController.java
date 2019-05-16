@@ -39,6 +39,21 @@ public class MainController {
 
     }
 
+    @GetMapping("/AdminTest")
+    public String AdminTest(Model model) {
+        model.addAttribute("booking", new Booking());
+        model.addAttribute("allAvailable", bookingService.getAllAvailable());
+        model.addAttribute("allConfirmed", bookingService.getAllConfirmed());
+        model.addAttribute("allBooked", bookingService.getAllBooked());
+        model.addAttribute("allBookings", bookingService.getAllBooking());
+
+
+
+        logger.info("admin page called by: "+myAccessDeniedHandler.getUserName());
+        return "AdminTest";
+
+    }
+
     @GetMapping("/login")
     public String login() {
         logger.info("/login called.");
@@ -63,7 +78,7 @@ public class MainController {
 
 
         logger.info("admin page called by: "+myAccessDeniedHandler.getUserName());
-        return "/admin";
+        return "admin";
     }
 
     @PostMapping("/admin")
