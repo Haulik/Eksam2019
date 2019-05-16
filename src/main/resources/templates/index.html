@@ -2,383 +2,523 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+
+    <!-- device-width initial scale one for mobile websites -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Eksamens projekt</title>
+    <!-- booststrap css file for bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- latest version of jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- latest version of popper js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/udm/popper.min.js"></script>
+    <!-- latest version of bootstrap js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- frontawesome, which allows to use social media icons -->
+    <!--<script src="https://use.frontawesome.com/releases/v5.0.8/js/all.js"></script>-->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 </head>
 <style>
-    .header {
-        background-color: #f1891a;
-        padding: 5px;
-        text-align: center;
-    }
+    @import url('https://fonts.googleapis.com/css?family=poppins:400,500,700');
 
-    .navbar1 {
-        overflow: hidden;
-        background-color: #333;
-        bottom: 0;
+    html, body {
+        height: 100%;
         width: 100%;
+        font-family: 'poppins', sans-serif;
+        color: #222;
     }
-
-    .navbar1 a {
-        float: left;
-        display: block;
-        color: #f2f2f2;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
+    .navbar{
+        padding: .8rem; /*route font size which is 16 pixels. 1 rem = 16pix*/
     }
-
-    .navbar1 a:hover {
-        background: #ddd;
-        color: black;
+    .navbar li{
+        padding-right: 20px;
     }
-    * {
-        box-sizing: border-box;
+    .nav-link {
+        font-size: 1.1em !important;
     }
-
-    body {
-        margin: 0;
-    }
-
-    #navbar {
-        overflow: hidden;
-        background-color: #333;
-    }
-
-    #navbar a {
-        float: left;
-        display: block;
-        color: #f2f2f2;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-    }
-
-    #navbar a:hover {
-        background-color: #ddd;
-        color: black;
-    }
-
-    #navbar a.active {
-        background-color: #4CAF50;
-        color: white;
-    }
-
-    .content {
-        padding: 16px;
-    }
-
-    .sticky {
-        position: fixed;
-        top: 0;
+    .carousel-inner img {
         width: 100%;
+        height: 100%
     }
-
-    .sticky + .content {
-        padding-top: 60px;
-    }
-
-    .dropdown {
-        float: left;
-        overflow: hidden;
-    }
-
-    .dropdown .dropbtn {
-        font-size: 16px;
-        border: none;
-        outline: none;
-        color: white;
-        padding: 14px 16px;
-        background-color: inherit;
-        font: inherit;
-        margin: 0;
-    }
-
-    .navbar a:hover, .dropdown:hover .dropbtn {
-        background-color: #f1891a;
-    }
-
-    .dropdown-content {
-        display: none;
+    .carousel-caption{
         position: absolute;
-        background-color: #f9f9f9;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .carousel-caption h1{
+        font-size: 500%;
+        text-transform: uppercase;
+        text-shadow: 1px, 1px 10px #000;
+    }
+    .carousel-caption h3{
+        font-size: 200%;
+        font-weight: 500%;
+        text-shadow: 1px 1px 15px #000;
+        padding-right: 1rem;
+    }
+    .btn-primary{
+        background-color: #8cc63f;
+        border: 1px solid #9cc95c;
+    }
+    .btn-primary:hover{
+        background-color: #79a536;
+        border: 1px solid #7cb231;
+    }
+    .jumbotron{
+        padding: 1rem;
+        border-radius: 0;
+    }
+    .padding{
+        padding-bottom: 2rem;
+    }
+    .welcome{
+        width: 75%;
+        margin: 0 auto;
+        padding-top: 2rem;
+    }
+    .welcome hr{
+        border-top: 2px solid #b4b4b4;
+        width: 95%;
+        margin-top: .3rem;
+        margin-bottom: 1rem;
+    }
+    .fa-automobile{
+        color: #e54d26;
+    }
+    .fa-envelope-o{
+        color: #563d7c;
+    }
+    .fa-cogs{
+        color: #2163af;
+    }
+    .fa-automobile, .fa-envelope-o, .fa-cogs{
+        font-size: 4rem;
+        margin: 1rem;
+    }
+    .fun{
         width: 100%;
-        left: 0;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
+        margin-bottom: 2rem;
+    }
+    .gif{
+        max-width: 100%;
+    }
+    .social a{
+        font-size: 4.5rem;
+        padding: 3rem;
+    }
+    .fa-facebook{
+        color: #3b5998;
+    }
+    .fa-twitter{
+        color: #00aced;
+    }
+    .fa-google-plus{
+        color: #dd4b39;
+    }
+    .fa-instagram{
+        color: #517fa4;
+    }
+    .fa-youtube{
+        color: #bb0000;
+    }
+    .fa-facebook:hover,
+    .fa-twitter:hover,
+    .fa-google-plus:hover,
+    .fa-instagram:hover,
+    .fa-youtube:hover {
+        color: #d5d5d5;
+    }
+    footer {
+        background-color: #3f3f3f;
+        color: #d5d5d5;
+        padding-top: 2rem;
+    }
+    hr.light {
+        border-top: 1px solid #d5d5d5;
+        width: 75%;
+        margin-top: .8rem;
+        margin-bottom: 1rem;
+    }
+    footer a {
+        color: #d5d5d5;
+    }
+    hr.light-100 {
+        border-top: 1px solid #d5d5d5;
+        width: 100%;
+        margin-top: .8rem;
+        margin-bottom: 1rem;
     }
 
-    .dropdown-content .header {
-        background: #f1891a;
-        padding: 16px;
-        color: white;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-
-    /* Create three equal columns that floats next to each other */
-    .column {
-        float: left;
-        width: 33.33%;
-        padding: 10px;
-        background-color: #ccc;
-        height: 250px;
-    }
-
-    .column a {
-        float: none;
-        color: black;
-        padding: 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
-    }
-
-    .column a:hover {
-        background-color: #ddd;
-    }
-
-    /* Clear floats after the columns */
-    .row:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-
-    /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-    @media screen and (max-width: 600px) {
-        .column {
-            width: 100%;
-            height: auto;
+    /*-- Media Queries --*/
+    @media (max-width: 992px) {
+        .social a{
+            font-size: 4em;
+            padding: 2rem;
+        }
+        .navbar img{
+            width: 60%;
         }
     }
 
 
-    body, html {
-        height: 100%;
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
+    @media (max-width: 768px) {
+
+        .carousel-caption{
+            top: 45%;
+        }
+        .carousel-caption h1{
+            font-size: 350%;
+        }
+        .carousel-caption h3{
+            font-size: 140%;
+            font-weight: 400%;
+            padding-right: .2rem;
+        }
+        .carousel-caption .btn{
+            font-size: 95%;
+            padding: 8px 4px;
+        }
+        .display-4 {
+            font-size: 200%;
+        }
+        .social a{
+            font-size: 2.5em;
+            padding: 1.2rem;
+        }
+        .navbar img{
+            width: 30%;
+        }
     }
 
-    * {
-        box-sizing: border-box;
+
+    @media (max-width: 576px) {
+        .carousel-caption{
+            top: 40%;
+        }
+        .carousel-caption h1{
+            font-size: 250%;
+        }
+        .carousel-caption h3{
+            font-size: 110%;
+            font-weight: 400%;
+            padding-right: .2rem;
+        }
+        .carousel-caption .btn{
+            font-size: 90%;
+            padding: 4px 8px;
+        }
+        .carousel-indicators {
+            display: none;
+        }
+        .display-4 {
+            font-size: 200%;
+        }
+        .social a{
+            font-size: 2em;
+            padding: .7rem;
+        }
     }
 
-    .parallax1 {
-        /* The image used */
-        background-image: url('https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5912/5912304cv15d.jpg');
-
-        /* Full height */
-        height: 100%;
-
-        /* Create the parallax scrolling effect */
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
+    @media (max-width: 1088px) {
+        .navbar img{
+            width: 30%;
+        }
     }
-
     .parallax2 {
         /* The image used */
         background-image: url('https://www.carpetcourt.com.au/media/catalog/category/SPRING_VINYL_TopBanner.jpg');
-
         /* Full height */
         height: 120%;
-
         /* Create the parallax scrolling effect */
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-    }
-
-    .parallaxContact {
-        /* The image used */
-
-        background-image: url('http://clipgoo.com/daut/as/f/f/floor-design-open-house-s-photos-plans-with-wrap-around-porch-and-pictures_houses-plans-with-big-porch_home-decor_home-decor-magazines-pinterest-vintage-decorators-coupon-fall-cheap-stores-beach-conte.jpg');
-
-
-
-
-        /* Full height */
-        height: 50%;
-
-        /* Create the parallax scrolling effect */
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    .Contact-text {
-        margin-top: auto;
-    }
-
-    .Contact-text button {
-        border: none;
-        outline: 0;
-        display: inline-block;
-        padding: 10px 25px;
-        color: black;
-        background-color: #ddd;
-        text-align: center;
-        cursor: pointer;
-    }
-
-    .Contact-text button:hover {
-        background-color: #555;
-        color: white;
-    }
-
-
-
-
-
-
-
-
-    /* Images used */
-    .img1 { background-image: url("img_snow.jpg"); }
-    .img2 { background-image: url("img_girl.jpg"); }
-    .img3 { background-image: url("img_lights.jpg"); }
-    .img4 { background-image: url("img_nature.jpg"); }
-    .img5 { background-image: url("img_forest.jpg"); }
-    .img6 { background-image: url("img_woods.jpg"); }
-
-    /* Position text in the middle of the page/image */
-    .bg-text {
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
-        color: white;
-        font-weight: bold;
-        font-size: 80px;
-        border: 10px solid #f1f1f1;
-        position: fixed
-    ;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 2;
-        width: 300px;
-        padding: 20px;
-        text-align: center;
     }
 </style>
 
-
-
-
-
-
 <body>
-<div class="header">
-    <h2>Steven A/S</h2>
-    <p>Danmarks bedste gulvlægger</p>
-</div>
-<div id="navbar">
-    <a href="#home">Home</a>
-    <div class="dropdown">
-        <button class="dropbtn">Dropdown
-            <i class="fa fa-caret-down"></i>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="img/logo.png" width="30%"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="dropdown-content">
-            <div class="header">
-                <h2>Mega Menu</h2>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Connect</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Image Slider -->
+<div id="slides" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+        <li data-target="#slides" data-slide-to="0" class="active"></li>
+        <li data-target="#slides" data-slide-to="1"></li>
+        <li data-target="#slides" data-slide-to="2"></li>
+    </ul>
+
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="img/background1.png">
+            <div class="carousel-caption">
+                <h1 class="display-2">Gulveksperten</h1>
+                <h3>Michael spangsborg</h3>
+                <button type="button" class="btn btn-outline-light btn-lg">VIEW DEMO
+                </button>
+                <button type="button" class="btn btn-primary btn-lg">Get Started
+                </button>
             </div>
-            <div class="row">
-                <div class="column">
-                    <h3>Category 1</h3>
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+        </div>
+        <div class="carousel-item">
+            <img src="img/background2.png">
+        </div>
+        <div class="carousel-item">
+            <img src="img/background3.png">
+        </div>
+
+        <a class="carousel-control-prev" href="#slides" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#slides" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+
+    </div>
+</div>
+
+
+<!-- Jumbotron -->
+<div class="container-fluid">
+    <div class="row jumbotron">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+            <p> A web hosting service allows individuals and organizations to make their website accessible via the world Wide Web</p>
+        </div>
+        <div class="col-xs-12 ">
+            <a href="#"><button type="button" class="btn btn-outline-secondary btn-lg">Web Hosting</button></a>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- Welcome Section -->
+<div class="container-fluid padding">
+    <div class="row welcome text-center">
+        <div class="col-12">
+            <h1 class="display-4">Bult with ease.</h1>
+        </div>
+        <hr>
+        <div class="col-12">
+            <p class="lead"> Welcome to my Bootstrap 4 website tutorial! Bootstrap is a free and open-source front-end library with HTML and CSS based designs.</p>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Three Column Section -->
+<div class="container-fluid padding">
+    <div class="row text-center padding">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <i class="fa fa-automobile fa-3x"></i>
+            <h3>Transport</h3>
+            <p>All you want to know about transport</p>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <i class="fa fa-envelope-o fa-3x"></i>
+            <h3>Email</h3>
+            <p>Send us an email</p>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <i class="fa fa fa-cogs fa-3x"></i>
+            <h3>Reparation</h3>
+            <p>All you need to know about our customer service</p>
+        </div>
+    </div>
+    <hr class="my-4">
+</div>
+
+<!-- Two Column Section -->
+<div class="container-fluid padding">
+    <div class="row padding">
+
+
+
+        <div class="col-md-12 col-lg-6">
+
+            <h2>If you bulid it...</h2>
+            <p>The columns will automatically stack on top of each other when the screen is less than 576px wide.</p>
+            <p>Resize the browser window to see the effect. Responsive web design has become more important as the amount of mobile traffic now accounts for more than half of total internet traffic.</p>
+            <p>It can also display the web page differently depending on the screen size or viewing device.</p>
+            <br>
+            <a href="#" class="btn btn-primary">Learn More</a>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+<hr class="my-4">
+
+
+<!-- Fixed background -->
+<figure>
+    <div class="fixed-wrap">
+
+        <div id="fixed">
+            <div class="parallax"></div>
+            <div class="parallax"></div>
+        </div>
+    </div>
+</figure>
+
+<!-- Emoji Section -->
+<div class="parallax2"></div>
+<!--  Meet the team-->
+
+
+Meet the Team
+
+
+
+<!-- Cards -->
+<div class="parallax2">
+    <div class="container-fluid padding">
+        <div class="row padding">
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="img/team2.jpeg">
+                    <div class="card-body">
+                        <h4 class="card-title">Sarah Loutit</h4>
+                        <p class="card-text">Designer Sarah Loutit, whose Ponting Fitzgerald-designed Auckland home graces the cover of issue 75 of Urbis, knows how to furnish a room. </p>
+                        <a href="#" class="btn btn-outline-secondary">See Profile</a>
+                    </div>
                 </div>
-                <div class="column">
-                    <h3>Category 2</h3>
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="img/team2.jpeg">
+                    <div class="card-body">
+                        <h4 class="card-title">Sarah Loutit</h4>
+                        <p class="card-text">Designer Sarah Loutit, whose Ponting Fitzgerald-designed Auckland home graces the cover of issue 75 of Urbis, knows how to furnish a room. </p>
+                        <a href="#" class="btn btn-outline-secondary">See Profile</a>
+                    </div>
                 </div>
-                <div class="column">
-                    <h3>Category 3</h3>
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="img/team2.jpeg">
+                    <div class="card-body">
+                        <h4 class="card-title">Sarah Loutit</h4>
+                        <p class="card-text">Designer Sarah Loutit, whose Ponting Fitzgerald-designed Auckland home graces the cover of issue 75 of Urbis, knows how to furnish a room. </p>
+                        <a href="#" class="btn btn-outline-secondary">See Profile</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <a href="#news">About us</a>
-    <a href="#contact">Contact</a>
-</div>
 
+    <!-- Two Column Section -->
+    <div class="container-fluid padding">
+        <div class="row padding">
+            <div class="col-md-12 col-lg-6">
+                <h2>Our Philosophy</h2>
+                <p>Any company can sell Product X or provide Service Y, but what differentiates you from everyone else in your field is your company philosophy.</p>
+                <p>A company's philosophy is a distillation of its culture or ambience into a group of core values that inform all aspects of its business practices. Having a strong company philosophy is a good way to guide your employees at decision-making crossroads, but it can also be a strong branding tool, and generally make your workplace more congenial.</p>
+                <br>
+            </div>
 
-<div class="parallax1" style="height:1000px;background-color:white;font-size:36px">
-    Scroll Up and Down this page to see the parallax scrolling effect.
-    This div is just here to enable scrolling.
-    Tip: Try to remove the background-attachment property to remove the scrolling effect.</div>
-
-<div style="height:225px;background-color:white;font-size:36px">
-
-    <h1 style="font-size:50px;position: static;font-style: italic;text-align: center;">Danmarks bedste kvalitet</h1>
-    <p style="font-size:50px;position: static;font-style: italic;text-align: center;">Med mere end 1 dags erfaring</p>
-
-</div>
-
-
-
-
-<div class="parallax2"></div>
-
-<div style="height:235px;background-color:black;font-size:36px">
-
-    <center><h1 style="font-style: italic;color: white; margin-top: auto;">Presented by</h1></center>
-    <img src="https://i.imgur.com/VKkRjuB.png" alt="Trulli" width="300" height="100" style="display: block;
-  margin-left: auto;
-  margin-right: auto;
-">
-
-
-</div>
-
-
-<div class="parallaxContact">
-    <div class="Contact-text" style="text-align: -webkit-center;">
-        <h1 style="font-size:50px;margin-top: auto">Reserver tid</h1>
-        <p></p>
-        <button>Book</button>
+            <div class="col-lg-6">
+                <br>
+                <img src="img/philosophy.png" class="img-fluid">
+            </div>
+        </div>
+        <hr class="my-4">
     </div>
-</div>
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2248.148733484409!2d12.53537221604485!3d55.70378640323856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465252496d687ed3%3A0xab513417c1575967!2sLygten+37%2C+2400+K%C3%B8benhavn!5e0!3m2!1sda!2sdk!4v1557576931560!5m2!1sda!2sdk" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <!-- Connect -->
+
+    <div class="cntainer-fluid padding">
+        <div class="row text-center padding">
+            <div class="col-12">
+                <h2>Connect</h2>
+            </div>
+            <div class="col-12 social padding">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <img src="img/logo.png" width="30%">
+                    <hr class="light">
+                    <p>555-555-5555</p>
+                    <p>email@yemail.com</p>
+                    <p>100 Street Name</p>
+                    <p>City, State, 00000</p>
+                </div>
+                <div class="col-md-4">
+                    <hr class="light">
+                    <h5>Our hours</h5>
+                    <hr class="light">
+                    <p>Monday: 9am - 5pm</p>
+                    <p>Saturday: 10am - 4pm</p>
+                    <p>Sunday: closed</p>
+                </div>
+                <div class="col-md-4">
+                    <hr class="light">
+                    <h5>Service Area</h5>
+                    <hr class="light">
+                    <p>City, State, 00000</p>
+                    <p>City, State, 00000</p>
+                    <p>City, State, 00000</p>
+                    <p>City, State, 00000</p>
+                </div>
+                <div class="col-12">
+                    <hr class="light">
+                    <h5>&copy; supremefloors.com</h5>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
 
-<div class="navbar1">
-    <a href="#" class="fb" title="Join us on Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-    <a href="#" class="tw" title="Join us on Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-    <a href="#" class="g-plus" title="Join us on Google+"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-    <a href="#" class="dribbble" title="Join us on Dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-    <a href="#" class="vimeo" title="Join us on Vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a>
-    <a href="#" class="pinterest" title="Join us on Pinterest"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
-    <a href="#" class="insta" title="Join us on Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-    <a href="#" class="in" title="Join us on Linked In"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-</div>
-<script>
-    window.onscroll = function() {myFunction()};
 
-    var navbar = document.getElementById("navbar");
-    var sticky = navbar.offsetTop;
-
-    function myFunction() {
-        if (window.pageYOffset >= sticky) {
-            navbar.classList.add("sticky")
-        } else {
-            navbar.classList.remove("sticky");
-        }
-    }
-</script>
 </body>
 </html>
