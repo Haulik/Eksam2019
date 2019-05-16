@@ -87,16 +87,16 @@ public class Booking {
         return bookingStart;
     }
 
-    public void setBookingStart(LocalDateTime bookingStart) {
-        this.bookingStart = bookingStart.withNano(0).toString();
+    public void setBookingStart(String bookingStart) {
+        this.bookingStart = bookingStart;
     }
 
     public String  getBookingEnd() {
         return bookingEnd;
     }
 
-    public void setBookingEnd(LocalDateTime bookingEnd) {
-        this.bookingEnd = bookingEnd.withNano(0).toString();
+    public void setBookingEnd(String bookingEnd) {
+        this.bookingEnd = bookingEnd;
     }
 
     public String getStatus() {
