@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,13 +73,16 @@ public class BookingRepoImpl implements BookingRepo {
                     size = rs.getInt("bookerSize");
 
                     // cast string til localDateTime
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                    String inputModified = bookingStart.replace ( "T" , " " );
 
-                    LocalDateTime bookingStartDT = LocalDateTime.parse(bookingStart, formatter);
-                    String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(bookingStartDT));
+                    LocalDateTime bookingStartDT = LocalDateTime.parse(inputModified, formatter);
+                    String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingStartDT));
+
+                   // OffsetDateTime odt = OffsetDateTime.parse ( bookingStart , DateTimeFormatter.ofPattern ( "yyyy-MM-dd HH:mm:ss.SSSX" ) ) ;
 
                     LocalDateTime bookingEndDT = LocalDateTime.parse(bookingEnd, formatter);
-                    String endFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(bookingEndDT));
+                    String endFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(bookingEndDT));
 
 
                     bookings.add(new Booking(id, startFinal, endFinal, state, name, adresse, mail, phone, size));

@@ -6,8 +6,6 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://momentjs.com/downloads/moment-with-locales.js"></script>
-    <script src="http://momentjs.com/downloads/moment-timezone-with-data.js"></script>
 </head>
 <style>
     h1.page-header {
@@ -379,9 +377,9 @@
                 <li><a href="/" target="_blank">Visit Site</a></li>
                 <li class="dropdown ">
                     <a>
-                    <form th:action="@{/logout}" method="post" class="dropdown ">
-                        <input type="submit" value="Sign Out" class="nav navbar-nav"/>
-                    </form></a>
+                        <form th:action="@{/logout}" method="post" class="dropdown ">
+                            <input type="submit" value="Sign Out" class="nav navbar-nav"/>
+                        </form></a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -397,8 +395,8 @@
                     <!-- Main Menu -->
                     <div class="side-menu-container">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="AdminTest"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
-                            <li><a href="adminCreateBooking"><span class="glyphicon glyphicon-plane"></span> Create booking</a></li>
+                            <li><a href="AdminTest"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+                            <li class="active"><a href="adminCreateBooking"><span class="glyphicon glyphicon-plane"></span> Create booking</a></li>
                             <li><a href="adminBooking"><span class="glyphicon glyphicon-cloud"></span> Bookings</a></li>
                             <img src="https://i.imgur.com/VKkRjuB.png" alt="Trulli" width="300" height="100">
 
@@ -414,13 +412,13 @@
     <div class="col-md-10 content">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Dashboard
+                Create a Booking
             </div>
             <div class="panel-body">
                 <div class="container">
 
                     <div class="starter-template">
-                        <h1>Admin page (Spring Security protected)</h1>
+                        <h1>Create a Booking</h1>
 
                         <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 
@@ -437,147 +435,20 @@
                         </form>
                     </div>
 
-                    <div class ="all available">
-
-                        <table id="available">
-                            <h2>all availible</h2>
-                            <thead>
-                            <tr class="header">
-                                <th>Booking start</th>
-                                <th>Booking end</th>
-                                <th>Status</th>
-                                <th>Name of booker</th>
-                                <th>Bookers adresse</th>
-                                <th>Bookers e-mail</th>
-                                <th>Bookers phone nr</th>
-                                <th>Size of bookers floor</th>
+                    <div class="container">
+                        <div class="row">
+                            <div class='col-sm-6'>
+                                <div class="form-group">
+                                    <div class='input-group date' id='datetimepicker1'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                                    </div>
+                                </div>
+                            </div>
 
 
-                            </tr>
-                            </thead>
-                            <tbody id="available2">
-                            <tr th:each="allAvailable: ${allAvailable}">
-                                <td th:text="${allAvailable.bookingStart}"/>
-                                <td th:text="${allAvailable.bookingEnd}"/>
-                                <td th:text="${allAvailable.status}"/>
-                                <td th:text="${allAvailable.name}"/>
-                                <td th:text="${allAvailable.adresse}"/>
-                                <td th:text="${allAvailable.mail}"/>
-                                <td th:text="${allAvailable.telefon}"/>
-                                <td th:text="${allAvailable.kvdm}"/>
-                                <td th:hidden="${allAvailable.id}"/>
-                            </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class ="all confirmed">
-
-                        <table id="confirmed">
-                            <h2>all confirmed</h2>
-                            <thead>
-                            <tr class="header">
-                                <th>Booking start</th>
-                                <th>Booking end</th>
-                                <th>Status</th>
-                                <th>Name of booker</th>
-                                <th>Bookers adresse</th>
-                                <th>Bookers e-mail</th>
-                                <th>Bookers phone nr</th>
-                                <th>Size of bookers floor</th>
-
-
-                            </tr>
-                            </thead>
-                            <tbody id="confirmed2">
-                            <tr th:each="allConfirmed: ${allConfirmed}">
-                                <td th:text="${allConfirmed.bookingStart}"/>
-                                <td th:text="${allConfirmed.bookingEnd}"/>
-                                <td th:text="${allConfirmed.status}"/>
-                                <td th:text="${allConfirmed.name}"/>
-                                <td th:text="${allConfirmed.adresse}"/>
-                                <td th:text="${allConfirmed.mail}"/>
-                                <td th:text="${allConfirmed.telefon}"/>
-                                <td th:text="${allConfirmed.kvdm}"/>
-                                <td th:hidden="${allConfirmed.id}"/>
-                            </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class ="all booked">
-
-                        <table id="booked">
-                            <h2>all booked, but not confirmed</h2>
-                            <thead>
-                            <tr class="header">
-                                <th>Booking start</th>
-                                <th>Booking end</th>
-                                <th>Status</th>
-                                <th>Name of booker</th>
-                                <th>Bookers adresse</th>
-                                <th>Bookers e-mail</th>
-                                <th>Bookers phone nr</th>
-                                <th>Size of bookers floor</th>
-
-
-                            </tr>
-                            </thead>
-                            <tbody id="booked2">
-                            <tr th:each="allBooked: ${allBooked}">
-                                <td th:text="${allBooked.bookingStart}"/>
-                                <td th:text="${allBooked.bookingEnd}"/>
-                                <td th:text="${allBooked.status}"/>
-                                <td th:text="${allBooked.name}"/>
-                                <td th:text="${allBooked.adresse}"/>
-                                <td th:text="${allBooked.mail}"/>
-                                <td th:text="${allBooked.telefon}"/>
-                                <td th:text="${allBooked.kvdm}"/>
-                                <td th:hidden="${allBooked.id}"/>
-                            </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class ="all bookings">
-
-                        <table id="allBookings2">
-                            <h2>all bookings</h2>
-                            <thead>
-                            <tr class="header">
-                                <th>Booking start</th>
-                                <th>Booking end</th>
-                                <th>Status</th>
-                                <th>Name of booker</th>
-                                <th>Bookers adresse</th>
-                                <th>Bookers e-mail</th>
-                                <th>Bookers phone nr</th>
-                                <th>Size of bookers floor</th>
-
-
-                            </tr>
-                            </thead>
-                            <tbody id="allBookings">
-                            <tr th:each="allBookings: ${allBookings}">
-                                <td th:text="${allBookings.bookingStart}"/>
-                                <td th:text="${allBookings.bookingEnd}"/>
-                                <td th:text="${allBookings.status}"/>
-                                <td th:text="${allBookings.name}"/>
-                                <td th:text="${allBookings.adresse}"/>
-                                <td th:text="${allBookings.mail}"/>
-                                <td th:text="${allBookings.telefon}"/>
-                                <td th:text="${allBookings.kvdm}"/>
-                                <td th:hidden="${booking.id}"/>
-                            </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
             </div>
         </div>
     </div>
@@ -599,6 +470,10 @@
                 $('.side-body').removeClass('body-slide-in');
                 $('.search-input').focus();
             });
+        });
+
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
         });
     </script>
 </div>

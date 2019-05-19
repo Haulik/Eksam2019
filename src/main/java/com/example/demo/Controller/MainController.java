@@ -56,6 +56,36 @@ public class MainController {
 
     }
 
+    @GetMapping("/adminBooking")
+    public String adminBooking(Model model) throws SQLException {
+        model.addAttribute("booking", new Booking());
+        model.addAttribute("allAvailable", bookingService.getAllAvailable());
+        model.addAttribute("allConfirmed", bookingService.getAllConfirmed());
+        model.addAttribute("allBooked", bookingService.getAllBooked());
+        model.addAttribute("allBookings", bookingService.getAllBooking());
+
+
+
+        logger.info("admin page called by: "+myAccessDeniedHandler.getUserName());
+        return "adminBooking";
+
+    }
+
+    @GetMapping("/adminCreateBooking")
+    public String adminCreateBooking(Model model) throws SQLException {
+        model.addAttribute("booking", new Booking());
+        model.addAttribute("allAvailable", bookingService.getAllAvailable());
+        model.addAttribute("allConfirmed", bookingService.getAllConfirmed());
+        model.addAttribute("allBooked", bookingService.getAllBooked());
+        model.addAttribute("allBookings", bookingService.getAllBooking());
+
+
+
+        logger.info("admin page called by: "+myAccessDeniedHandler.getUserName());
+        return "adminCreateBooking";
+
+    }
+
     @GetMapping("/login")
     public String login() {
         logger.info("/login called.");
