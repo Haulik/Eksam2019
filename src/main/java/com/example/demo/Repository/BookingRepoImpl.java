@@ -293,7 +293,7 @@ public class BookingRepoImpl implements BookingRepo {
                     size = rs.getInt("bookerSize");
 
                     // cast string til localDateTime
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
                     LocalDateTime bookingStartDT = LocalDateTime.parse(bookingStart, formatter);
                     String startFinal = (DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(bookingStartDT));
