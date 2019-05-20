@@ -12,6 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.sql.SQLException;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
@@ -54,47 +56,58 @@ public class DemoApplicationTests {
     //}
 
     @Test
-    public void createBooking() {
+    public void createBooking() throws SQLException {
         bookingRepo.createBooking(new Booking("TestBook1"));
         assertEquals("TestBook1", bookingRepo.getBookingByName("TestBook1").get(0).getName());
 
     }
 
     @Test
-    public void getBookingById(){
+    public void getBookingById() throws SQLException {
         assertEquals("Tester-Egon", bookingRepo.getBookingById(1).get(0).getName());
     }
 
     @Test
-    public void getAllBooking() {
+    public void getAllBooking() throws SQLException {
         assertEquals("Tester-Egon", bookingRepo.getAllBooking().get(0).getName());
     }
 
     @Test
-    public void getAllAvailable() {
+    public void getAllAvailable() throws SQLException {
         assertEquals("Tester-Alf", bookingRepo.getAllAvailable().get(0).getName());
     }
 
     @Test
-    public void getAllConfirmed() {
+    public void getAllConfirmed() throws SQLException {
         assertEquals("Tester-Egon", bookingRepo.getAllConfirmed().get(0).getName());
     }
 
     @Test
-    public void getAllBooked() {
+    public void getAllBooked() throws SQLException {
         assertEquals("Tester-Torben", bookingRepo.getAllBooked().get(0).getName().toString());
     }
 
     @Test
-    public void cancelBooking() {
+    public void cancelBooking() throws SQLException {
         assertEquals("available", bookingRepo.cancelBooking(4).toString());
     }
 
-    @Test
-    public void deleteBooking() {
 
-        bookingRepo.deleteBooking(4);
-        assertEquals(4,bookingRepo.deleteBooking(4));
+
+    @Test
+    public void customerBook() throws SQLException{
+        Booking booking = new Booking();
+        booking.setStatus("booked");
+        bookingRepo.book(booking, bookingRepo.getBookingByName("TestBook1").get(0).getId());
+        assertEquals("booked", bookingRepo.getBookingByName("TestBook1").get(0).getStatus());
+    }
+
+    @Test
+    public void deleteBooking() throws SQLException{
+
+
+        bookingRepo.deleteBooking(bookingRepo.getBookingByName("TestBook1").get(0).getId());
+        assertEquals((bookingRepo.getBookingByName("TestBook1").get(0).getId()),bookingRepo.deleteBooking(bookingRepo.getBookingByName("TestBook1").get(0).getId()));
     }
 
     // test kvdrm pris

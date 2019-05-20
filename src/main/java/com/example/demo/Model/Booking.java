@@ -40,8 +40,8 @@ public class Booking {
     public Booking(String name) {
 
 
-        this.bookingStart = "2019-06-01T12:00:00";
-        this.bookingEnd = "2019-06-01T14:00:00";
+        this.bookingStart = "2019-06-01T12:00";
+        this.bookingEnd = "2019-06-01T14:00";
 
 
 
@@ -64,7 +64,7 @@ public class Booking {
                 '}';
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

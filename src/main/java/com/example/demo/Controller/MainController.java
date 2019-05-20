@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.sql.SQLException;
+
 
 @org.springframework.stereotype.Controller
 public class MainController {
@@ -40,7 +42,7 @@ public class MainController {
     }
 
     @GetMapping("/AdminTest")
-    public String AdminTest(Model model) {
+    public String AdminTest(Model model) throws SQLException {
         model.addAttribute("booking", new Booking());
         model.addAttribute("allAvailable", bookingService.getAllAvailable());
         model.addAttribute("allConfirmed", bookingService.getAllConfirmed());
@@ -51,6 +53,36 @@ public class MainController {
 
         logger.info("admin page called by: "+myAccessDeniedHandler.getUserName());
         return "AdminTest";
+
+    }
+
+    @GetMapping("/adminBooking")
+    public String adminBooking(Model model) throws SQLException {
+        model.addAttribute("booking", new Booking());
+        model.addAttribute("allAvailable", bookingService.getAllAvailable());
+        model.addAttribute("allConfirmed", bookingService.getAllConfirmed());
+        model.addAttribute("allBooked", bookingService.getAllBooked());
+        model.addAttribute("allBookings", bookingService.getAllBooking());
+
+
+
+        logger.info("admin page called by: "+myAccessDeniedHandler.getUserName());
+        return "adminBooking";
+
+    }
+
+    @GetMapping("/adminCreateBooking")
+    public String adminCreateBooking(Model model) throws SQLException {
+        model.addAttribute("booking", new Booking());
+        model.addAttribute("allAvailable", bookingService.getAllAvailable());
+        model.addAttribute("allConfirmed", bookingService.getAllConfirmed());
+        model.addAttribute("allBooked", bookingService.getAllBooked());
+        model.addAttribute("allBookings", bookingService.getAllBooking());
+
+
+
+        logger.info("admin page called by: "+myAccessDeniedHandler.getUserName());
+        return "adminCreateBooking";
 
     }
 
@@ -67,7 +99,7 @@ public class MainController {
     }
 
     @GetMapping("/admin")
-    public String admin(Model model){
+    public String admin(Model model) throws SQLException {
 
         model.addAttribute("booking", new Booking());
         model.addAttribute("allAvailable", bookingService.getAllAvailable());
@@ -93,7 +125,7 @@ public class MainController {
     }
 
     @GetMapping("/bookTime")
-    public String bookTime (Model model){
+    public String bookTime (Model model) throws SQLException {
 
         logger.info("bookTime called.");
 
@@ -108,16 +140,19 @@ public class MainController {
         model.addAttribute("booker", new Booking());
 
         tempId = idForBook;
+        logger.info("vi kom til: "+tempId);
+        logger.info("vi kom til idforbook: "+idForBook);
 
-        return "bookTime";
+        return "bookDetails";
     }
 
     @PostMapping("/bookDetails")
-    public String bookDetails(@ModelAttribute Booking booking){
+    public String bookDetails(@ModelAttribute Booking booking) throws SQLException {
 
 
         // ANDERS MANGLER
         bookingService.bookTime(booking, tempId);
+        logger.info("HUZZAAAA");
 
         return "redirect:/bookTime";
     }
