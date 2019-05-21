@@ -87,10 +87,10 @@ public class DemoApplicationTests {
         assertEquals("Tester-Torben", bookingRepo.getAllBooked().get(0).getName().toString());
     }
 
-    @Test
+    /*@Test
     public void cancelBooking() throws SQLException {
         assertEquals("available", bookingRepo.cancelBooking(4).toString());
-    }
+    }*/
 
 
 
