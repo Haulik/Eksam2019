@@ -179,8 +179,8 @@
         <div class="frb-group">
             <div class="row" th:each="bookings: ${bookings}">
                 <div class="frb frb-default col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                    <input type="radio" id="radio-button-1" name="radio-button" value="1" checked="checked">
-                    <label for="radio-button-1">
+                    <input type="radio" id="radio-button-0" name="radio-button" value="0" checked="checked">
+                    <label for="radio-button-0">
                         <span class="frb-title" th:text="${bookings.bookingStart}"></span><br/>
                         <span class="frb-description" th:text="${bookings.bookingEnd}"></span>
                         <a th:href="${'bookDetails/'+bookings.id}">Book this time!</a>

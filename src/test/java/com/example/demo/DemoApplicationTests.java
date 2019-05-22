@@ -89,7 +89,9 @@ public class DemoApplicationTests {
 
     /*@Test
     public void cancelBooking() throws SQLException {
+        assertEquals("available", bookingRepo.cancelBooking(4)
         assertEquals("available", bookingRepo.cancelBooking(4).toString());
+
     }*/
 
 
