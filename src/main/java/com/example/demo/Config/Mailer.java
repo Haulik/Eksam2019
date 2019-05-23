@@ -59,8 +59,8 @@ public class Mailer {
         multipart.addBodyPart(messageBodyPart);
         MimeBodyPart attachPart = new MimeBodyPart();
 
-        attachPart.attachFile("/var/tmp/image19.png");
-        multipart.addBodyPart(attachPart);
+        //attachPart.attachFile("/var/tmp/image19.png");
+        //multipart.addBodyPart(attachPart);
         //msg.setContent(multipart);
         Transport.send(msg);
     }
