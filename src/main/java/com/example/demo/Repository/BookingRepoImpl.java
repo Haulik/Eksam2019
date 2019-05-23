@@ -130,6 +130,7 @@ public class BookingRepoImpl implements BookingRepo {
 
         String ava = "available";
         this.template.update(sql, ava, id);
+
     }
 
     @Override

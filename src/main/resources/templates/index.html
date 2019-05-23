@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
 
@@ -18,43 +18,44 @@
     <!--<script src="https://use.frontawesome.com/releases/v5.0.8/js/all.js"></script>-->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="../static/style.css" th:href="@{/style.css}">
-    <link rel="stylesheet" type="text/css" href="../static/style2.css" th:href="@{/style2.css}">
-
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style2.css">
 
 </head>
 
 
 <body>
+<div id="Home"></div>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top"  >
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="http://localhost:8080/logo.png" width="15%"></a>
+        <a class="navbar-brand" href="#"><img src="logo.png" width="15%"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
+        <div class="collapse navbar-collapse navbarCollapse" id="navbarResponsive">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#About">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#Serv">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="#Team">Team</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Team</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Connect</a>
+                    <a class="nav-link" href="#Con">Connect</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+
+
 
 
 <!-- Image Slider -->
@@ -131,7 +132,7 @@
         </div>
         <hr>
         <div class="col-12">
-            <p class="lead"> Gulveksperten klarer både store og små gulvopgaver </p>
+            <p class="lead" id="About"> Gulveksperten klarer både store og små gulvopgaver </p>
 
 
         </div>
@@ -198,7 +199,7 @@
 <!-- Emoji Section -->
 
 <!--  Meet the team-->
-<div class="parallax2">
+<div class="parallax2" >
     <div class="ptext">
         <span class="border trans">
             Vi har den bedste kvalitet
@@ -208,7 +209,7 @@
 <div class="container-fluid padding">
     <div class="row welcome text-center">
         <div class="col-12">
-            <h1 class="display-4">Service</h1>
+            <h1 class="display-4" id="Serv">Service</h1>
         </div>
     </div>
 </div>
@@ -258,10 +259,12 @@
         </span>
     </div>
 </div>
+<div id="link1"></div>
 <div class="container-fluid padding">
     <div class="row welcome text-center">
         <div class="col-12">
-            <h1 class="display-4">The Team</h1>
+            <h1 class="display-4" id="Team">The Team</h1>
+
         </div>
     </div>
 </div>
@@ -284,13 +287,13 @@
 </div>
 
 <!-- Two Column Section -->
-
+<hr class="my-4">
 <!-- Connect -->
 
-<div class="cntainer-fluid padding">
+<div class="cntainer-fluid padding container-fluid">
     <div class="row text-center padding">
         <div class="col-12">
-            <h2>Connect</h2>
+            <h2 id="Con">Connect</h2>
         </div>
         <div class="col-12 social padding">
             <a href="#"><i class="fa fa-facebook"></i></a>
@@ -325,13 +328,13 @@
                 <p>Sunday: closed</p>
             </div>
             <div class="col-md-4">
+                <img src="https://i.imgur.com/VKkRjuB.png" width="30%">
                 <hr class="light">
                 <h5>Service Area</h5>
                 <hr class="light">
-                <p>City, State, 00000</p>
-                <p>City, State, 00000</p>
-                <p>City, State, 00000</p>
-                <p>City, State, 00000</p>
+                <p>København N, København, 2200</p>
+                <p>Stenløse, Egedal, 3660</p>
+                <p>Ølstykke, Egedal, 3650</p>
             </div>
             <div class="col-12">
                 <hr class="light">
@@ -344,5 +347,12 @@
 
 
 
+
+<script>
+    $(".nav .nav-link").on("click", function(){
+        $(".nav").find(".active").removeClass("active");
+        $(this).addClass("active");
+    });
+</script>
 </body>
 </html>

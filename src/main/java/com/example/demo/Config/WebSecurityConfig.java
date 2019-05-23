@@ -15,14 +15,10 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/css/**", "/js/**", "/images/**").permitAll();
-        http.authorizeRequests().antMatchers("/resources/**").permitAll().anyRequest().permitAll();
         http
                 .authorizeRequests()
-                .antMatchers("/", "/home","/bookTime", "/bookDetails/{book}","/bookDetail/{book}", "/bookDetails", "/index", "/bookDetail", "/bookDetail/logo.png").permitAll()
-
-
-                .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/admin", "/adminCreateBooking", "/adminBooking", "/AdminTest").hasRole("ADMIN")
+                .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
