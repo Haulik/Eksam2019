@@ -7,10 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.SQLException;
 
@@ -21,6 +19,7 @@ public class MainController {
     private static Logger logger = LoggerFactory.getLogger(MainController.class);
     private Booking booking;
     private int tempId;
+    private String tempId2;
 
     @Autowired
     MyAccessDeniedHandler myAccessDeniedHandler;
@@ -145,6 +144,19 @@ public class MainController {
 
         return "bookDetails";
     }
+    @GetMapping("/bookDetail/{book}")
+    public String bookDetail(@PathVariable("book") String idForBook, Model model){
+
+        model.addAttribute("booker", new Booking());
+
+        tempId2 = idForBook;
+        logger.info("vi kom til: "+tempId);
+        logger.info("vi kom til idforbook: "+idForBook);
+
+        return "bookDetail";
+    }
+
+
 
     @PostMapping("/bookDetails")
     public String bookDetails(@ModelAttribute Booking booking) throws SQLException {

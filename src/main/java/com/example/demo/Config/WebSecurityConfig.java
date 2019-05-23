@@ -15,11 +15,13 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers("/css/**", "/js/**", "/images/**").permitAll();
+        http.authorizeRequests().antMatchers("/resources/**").permitAll().anyRequest().permitAll();
         http
                 .authorizeRequests()
-                .antMatchers("/", "/home","/bookTime", "/bookDetails/{book}", "/bookDetails", "/index", "/#", "#", "/#slides", "stylesheet", "/", "/slide2.png", "/slide1.png", "/slide4.png", "/slide3.png", "/slide5.png", "/slide6.png").permitAll()
-                .antMatchers("/photo1.png", "/photo2.png", "/photo3.png", "/photo4.png", "/photo5.png", "/photo6.png", "/photo7.png", "/photo8.png", "/photo9.png", "/photo10.png", "/img/", "/logo.png", "/resources/**","/*.png", "/team.jpeg", "/*.jpeg", "img/logo.png", "/parallax1.jpg", "/parallax2.png", "/style.ccs", "/style2.css" ).permitAll()
-                .antMatchers("/service1.jpg", "/service2.jpg", "/service3.jpg", "/logo.png" ).permitAll()
+                .antMatchers("/", "/home","/bookTime", "/bookDetails/{book}","/bookDetail/{book}", "/bookDetails", "/index", "/bookDetail", "/bookDetail/logo.png").permitAll()
+
+
                 .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
