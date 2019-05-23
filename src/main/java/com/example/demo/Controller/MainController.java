@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Config.Mailer;
 import com.example.demo.Model.Booking;
 import com.example.demo.Service.BookingService;
 import org.slf4j.Logger;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+import java.io.IOException;
 import java.sql.SQLException;
 
 
@@ -26,6 +30,8 @@ public class MainController {
     MyAccessDeniedHandler myAccessDeniedHandler;
     @Autowired
     BookingService bookingService;
+    @Autowired
+    Mailer mailer;
 
     @GetMapping("/")
     public String index() {
@@ -143,7 +149,7 @@ public class MainController {
         logger.info("vi kom til: "+tempId);
         logger.info("vi kom til idforbook: "+idForBook);
 
-        return "bookDetails";
+        return "/bookDetails";
     }
 
     @PostMapping("/bookDetails")
@@ -156,6 +162,56 @@ public class MainController {
 
         return "redirect:/bookTime";
     }
+
+    @GetMapping("/confirm/{id}")
+    public String confirm(@PathVariable("id") int idForConfirm) throws SQLException, AddressException, MessagingException, IOException {
+
+        String to = bookingService.getBookingById(idForConfirm).getMail();
+        String name = bookingService.getBookingById(idForConfirm).getName();
+        String start = bookingService.getBookingById(idForConfirm).getBookingStart();
+        String end = bookingService.getBookingById(idForConfirm).getBookingEnd();
+
+        String context = mailer.mailTemplate(name, start, end, idForConfirm);
+
+        mailer.sendmail(to, context);
+        bookingService.confirm(idForConfirm);
+        logger.info("mail sent");
+
+        return "redirect:/admin";
+    }
+
+    @GetMapping("/cancel/{id}")
+    public String cancel(@PathVariable("id") int idForCancel)throws SQLException, AddressException, MessagingException, IOException {
+
+        logger.info(idForCancel+" has been cancled, such a shame");
+
+        String end = bookingService.getBookingById(idForCancel).getBookingEnd();
+        String start = bookingService.getBookingById(idForCancel).getBookingStart();
+        String name = bookingService.getBookingById(idForCancel).getName();
+
+        String context = mailer.canceltemplate(end, start, idForCancel, name);
+        mailer.sendmail("steffens.biks@gmail.com", context);
+
+
+
+        bookingService.cancel(idForCancel);
+
+        return "redirect:/cancelSuccess/"+idForCancel;
+    }
+
+    @GetMapping("/cancelSuccess/{id}")
+    public String cancelSuccess(@PathVariable("id") int idForCancel, Model model){
+
+        Booking booking = new Booking();
+        booking.setId(idForCancel);
+
+        model.addAttribute("booker", booking);
+
+
+        return "/cancelSuccess";
+    }
+
+
 
 
 
