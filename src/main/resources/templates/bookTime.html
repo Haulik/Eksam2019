@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BookTime</title>
+    <!-- booststrap css file for bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- latest version of jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- latest version of popper js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/udm/popper.min.js"></script>
+    <!-- latest version of bootstrap js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- frontawesome, which allows to use social media icons -->
+    <!--<script src="https://use.frontawesome.com/releases/v5.0.8/js/all.js"></script>-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/style.css" th:href="@{/style.css}">
+
 </head>
 <body>
 <style>
+    .ds-btn li{ list-style:none; float:left; padding:10px; }
+    .ds-btn li a span{padding-left:15px;padding-right:5px;width:100%;display:inline-block; text-align:left;}
+    .ds-btn li a span small{width:100%; display:inline-block; text-align:left;}
     .frb-group {
         margin: 15px 0;
     }
@@ -127,70 +144,134 @@
     }
 </style>
 
-<table class="table">
-    <thead class="thead-dark">
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Dato</th>
-        <th scope="col">Slut tidspunkt</th>
-        <th scope="col">-</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="bookings: ${bookings}">
-        <th scope="row">1</th>
-        <td th:text="${bookings.bookingStart}"/>
-        <td th:text="${bookings.bookingEnd}"/>
-        <td><a th:href="${'bookDetails/'+bookings.id}">Book this time!</a></td>
-        <td th:hidden="${bookings.id}"/>
-    </tr>
-    </tbody>
-</table>
-
-
-<div class ="bookings">
-
-    <table id="myTable">
-        <thead>
-        <tr class="header">
-            <th>Date of open booking</th>
-
-
-        </tr>
-        </thead>
-        <tbody id="myTable2">
-        <tr th:each="bookings: ${bookings}">
-            <td th:text="${bookings.bookingStart}"/>
-            <td th:hidden="${bookings.id}"/>
-            <td>
-                <a >Book this time!</a>
-            <td/>
-        </tr>
-
-        </tbody>
-    </table>
+<!-- Navigation -->
+<div>
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top"  >
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="http://localhost:8080/logo.png" width="15%"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse navbarCollapse" id="navbarResponsive">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/#About">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/#Serv">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/#Team">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/#Con">Connect</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 </div>
 
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<div class="row">
-    <!-- RADIO BUTTONS BLOCK -->
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <h3 class="text-center title-center">These are the available time-slots.</h3>
-        <div class="frb-group">
-            <div class="row" th:each="bookings: ${bookings}">
-                <div class="frb frb-default col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                    <input type="radio" id="radio-button-0" name="radio-button" value="0" checked="checked">
-                    <label for="radio-button-0">
-                        <span class="frb-title" th:text="${bookings.bookingStart}"></span><br/>
-                        <span class="frb-description" th:text="${bookings.bookingEnd}"></span>
-                        <a th:href="${'bookDetails/'+bookings.id}">Book this time!</a>
-                    </label>
-                </div>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Booktime</li>
+                </ol>
+            </nav>
         </div>
     </div>
 </div>
 
+
+<div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <h3 class="text-center title-center">These are the available time-slots.</h3>
+    <div class="row">
+        <ul class="ds-btn" th:each="bookings: ${bookings}">
+            <li class="row">
+                <a class="btn btn-lg btn-primary" th:href="${'bookDetails/'+bookings.id}">
+                    <i class="fa fa-clock-o pull-left"></i>
+                    <span class="frb-title" th:text="${bookings.bookingStart}"></span><br/>
+                    <small><span class="frb-description pull-right" th:text="${bookings.bookingEnd}"></span></small></a>
+
+            </li>
+        </ul>
+    </div>
+    </div>
+</div>
+
+
+
+<hr class="my-4">
+<!-- Connect -->
+
+<div class="cntainer-fluid padding container-fluid">
+    <div class="row text-center padding">
+        <div class="col-12">
+            <h2 id="Con">Connect</h2>
+        </div>
+        <div class="col-12 social padding">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-google-plus"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-youtube"></i></a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+
+<footer>
+    <div class="container-fluid padding">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <img src="logo.png" width="30%">
+                <hr class="light">
+                <p>555-555-5555</p>
+                <p>email@yemail.com</p>
+                <p>100 Street Name</p>
+                <p>City, State, 00000</p>
+            </div>
+            <div class="col-md-4">
+                <hr class="light">
+                <h5>Our hours</h5>
+                <hr class="light">
+                <p>Monday: 9am - 5pm</p>
+                <p>Saturday: 10am - 4pm</p>
+                <p>Sunday: closed</p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://i.imgur.com/VKkRjuB.png" width="30%">
+                <hr class="light">
+                <h5>Service Area</h5>
+                <hr class="light">
+                <p>København N, København, 2200</p>
+                <p>Stenløse, Egedal, 3660</p>
+                <p>Ølstykke, Egedal, 3650</p>
+            </div>
+            <div class="col-12">
+                <hr class="light">
+                <h5>&copy; Floormason.com</h5>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+<script>
+    $(".nav .nav-link").on("click", function(){
+        $(".nav").find(".active").removeClass("active");
+        $(this).addClass("active");
+    });
+</script>
     <script type="text/javascript" src="./resources/plugins/jquery-3.2.1/js/jquery.min.js"></script>
     <script type="text/javascript" src="./resources/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 
