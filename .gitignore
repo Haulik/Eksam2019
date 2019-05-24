@@ -30,3 +30,16 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+
+### Eclipse template
+*.pydevproject
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
