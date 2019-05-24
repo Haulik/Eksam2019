@@ -77,7 +77,9 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                        <li class="breadcrumb-item" ><a href="/bookTime">Booktime</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">BookDetail</li>
+
                     </ol>
                 </nav>
             </div>
@@ -99,8 +101,6 @@
                             <div class="form-group">
                                 <label for="adresse">Adresse</label>
                                 <input type="text" class="form-control" id="adresse" aria-describedby="info" placeholder="Enter adresse" th:field="${booker.adresse}" required>
-                                <div id="info">Closing this window will discard any information entered and
-                                    return you back to the main page</div>
 
                             </div>
                             <div class="form-group">
@@ -109,11 +109,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="telefon">Telefon</label>
-                                <input type="number" class="form-control" id="telefon" aria-describedby="info" placeholder="Enter telefon" th:field="${booker.telefon}" required>
+                                <input type="hidden number" class="form-control" id="telefon" aria-describedby="info" placeholder="Enter Telefon" th:field="${booker.telefon}" required>
                             </div>
                             <div class="form-group">
                                 <label for="kvdm">Kvdm</label>
-                                <input type="number" class="form-control" id="kvdm" aria-describedby="info" placeholder="Enter kvdm" th:field="${booker.kvdm}" required>
+                                <input type="hidden number" class="form-control" id="kvdm" aria-describedby="kvdm" placeholder="0" th:field="${booker.kvdm}" required>
+                                <small id="kvdm" class="form-text text-muted">Hvor meget kvadratmeter skal der laves?</small>
                             </div>
                             <div class="mx-auto">
                                 <button id="btn-api" data-toggle="modal" data-target="#myModal" type="submit" class="btn btn-primary text-right">Submit</button></div>
@@ -256,6 +257,6 @@
     function myFunction() {
         document.getElementById("myNumber").placeholder = "Amount";
     }
-</script>
+</>
 </body>
 </html>
