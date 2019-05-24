@@ -25,8 +25,10 @@ public class Mailer {
     public String canceltemplate(String startTime, String endTime, int id, String name){
 
         String template = "Hej Steffen,\n"+
+
                 "Din kunde: "+name+" har desværre aflyst sin tid: "+startTime+" - "+endTime+"\n" +
                 "Tiden med id: "+id+" er nu blevet ledig igen";
+
 
         return template;
     }
@@ -64,4 +66,6 @@ public class Mailer {
         //msg.setContent(multipart);
         Transport.send(msg);
     }
+
 }
+
