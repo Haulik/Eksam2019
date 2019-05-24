@@ -353,6 +353,8 @@
 <body>
 
 
+
+
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -417,12 +419,7 @@
             <div class="panel-body">
                 <div class="container">
 
-                    <div class="starter-template">
-                        <h1>Create a Booking</h1>
 
-                        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-
-                    </div>
 
                     <div>
                         <form id="form" class="box2" th:action="@{/admin}" th:object="${admin}" method="post">
@@ -434,19 +431,8 @@
 
                         </form>
                     </div>
-
-                    <div class="container">
-                        <div class="row">
-                            <div class='col-sm-6'>
-                                <div class="form-group">
-                                    <div class='input-group date' id='datetimepicker1'>
-                                        <input type='text' class="form-control" />
-                                        <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                                    </div>
-                                </div>
-                            </div>
+                </div>
+            </div>
 
 
             </div>

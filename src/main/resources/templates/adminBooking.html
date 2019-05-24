@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
 </head>
 <style>
     h1.page-header {
@@ -349,6 +354,10 @@
             margin: 0;
         }
     }
+    .thead-dark th{color:#fff;background-color:#343a40;border-color:#454d55}.table
+
+    .table-striped tbody tr:nth-of-type(odd){background-color:rgba(0,0,0,.05)}.table-hover tbody tr:hover{color:#212529;background-color:rgba(0,0,0,.075)}.table-primary,.table-primary>td,.table-primary>th{background-color:#b8daff}.table-primary
+
 </style>
 <body>
 
@@ -416,63 +425,60 @@
             <div class="panel-body">
                 <div class="container">
 
-                    <div class="starter-template">
+                    <div class="starter-template text-center">
                         <h1>All Bookings</h1>
-
-                        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-
                     </div>
 
 
+
                     <div class ="all available">
+                    <table class="table table-striped">
+                        <h2>All available</h2>
+                        <thead class="thead-dark">
+                        <tr>
 
-                        <table id="available">
-                            <h2>all availible</h2>
-                            <thead>
-                            <tr class="header">
-                                <th>Booking start</th>
-                                <th>Booking end</th>
-                                <th>Status</th>
-                                <th>Name of booker</th>
-                                <th>Bookers adresse</th>
-                                <th>Bookers e-mail</th>
-                                <th>Bookers phone nr</th>
-                                <th>Size of bookers floor</th>
+                            <th scope="col">Booking start</th>
+                            <th scope="col">Booking end</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Name of booker</th>
+                            <th scope="col">Bookers adresse</th>
+                            <th scope="col">Bookers e-mail</th>
+                            <th scope="col">Bookers phone nr</th>
+                            <th scope="col">Size of bookers floor</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="allAvailable: ${allAvailable}">
 
+                            <td th:text="${allAvailable.bookingStart}"/>
+                            <td th:text="${allAvailable.bookingEnd}"/>
+                            <td th:text="${allAvailable.status}"/>
+                            <td th:text="${allAvailable.name}"/>
+                            <td th:text="${allAvailable.adresse}"/>
+                            <td th:text="${allAvailable.mail}"/>
+                            <td th:text="${allAvailable.telefon}"/>
+                            <td th:text="${allAvailable.kvdm}"/>
+                            <td th:hidden="${allAvailable.id}"/>
+                        </tr>
+                        </tbody>
+                    </table>
 
-                            </tr>
-                            </thead>
-                            <tbody id="available2">
-                            <tr th:each="allAvailable: ${allAvailable}">
-                                <td th:text="${allAvailable.bookingStart}"/>
-                                <td th:text="${allAvailable.bookingEnd}"/>
-                                <td th:text="${allAvailable.status}"/>
-                                <td th:text="${allAvailable.name}"/>
-                                <td th:text="${allAvailable.adresse}"/>
-                                <td th:text="${allAvailable.mail}"/>
-                                <td th:text="${allAvailable.telefon}"/>
-                                <td th:text="${allAvailable.kvdm}"/>
-                                <td th:hidden="${allAvailable.id}"/>
-                            </tr>
-
-                            </tbody>
-                        </table>
                     </div>
 
                     <div class ="all confirmed">
 
-                        <table id="confirmed">
-                            <h2>all confirmed</h2>
-                            <thead>
+                        <table id="confirmed" class="table table-striped">
+                            <h2>All confirmed</h2>
+                            <thead class="thead-dark">
                             <tr class="header">
-                                <th>Booking start</th>
-                                <th>Booking end</th>
-                                <th>Status</th>
-                                <th>Name of booker</th>
-                                <th>Bookers adresse</th>
-                                <th>Bookers e-mail</th>
-                                <th>Bookers phone nr</th>
-                                <th>Size of bookers floor</th>
+                                <th scope="col">Booking start</th>
+                                <th scope="col">Booking end</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Name of booker</th>
+                                <th scope="col">Bookers adresse</th>
+                                <th scope="col">Bookers e-mail</th>
+                                <th scope="col">Bookers phone nr</th>
+                                <th scope="col">Size of bookers floor</th>
 
 
                             </tr>
@@ -496,18 +502,18 @@
 
                     <div class ="all booked">
 
-                        <table id="booked">
-                            <h2>all booked, but not confirmed</h2>
-                            <thead>
+                        <table id="booked" class="table table-striped">
+                            <h2>All booked, but not confirmed</h2>
+                            <thead class="thead-dark">
                             <tr class="header">
-                                <th>Booking start</th>
-                                <th>Booking end</th>
-                                <th>Status</th>
-                                <th>Name of booker</th>
-                                <th>Bookers adresse</th>
-                                <th>Bookers e-mail</th>
-                                <th>Bookers phone nr</th>
-                                <th>Size of bookers floor</th>
+                                <th scope="col">Booking start</th>
+                                <th scope="col">Booking end</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Name of booker</th>
+                                <th scope="col">Bookers adresse</th>
+                                <th scope="col">Bookers e-mail</th>
+                                <th scope="col">Bookers phone nr</th>
+                                <th scope="col">Size of bookers floor</th>
 
 
                             </tr>
@@ -531,20 +537,18 @@
 
                     <div class ="all bookings">
 
-                        <table id="allBookings2">
-                            <h2>all bookings</h2>
-                            <thead>
+                        <table id="allBookings2" class="table table-striped">
+                            <h2>All bookings</h2>
+                            <thead class="thead-dark">
                             <tr class="header">
-                                <th>Booking start</th>
-                                <th>Booking end</th>
-                                <th>Status</th>
-                                <th>Name of booker</th>
-                                <th>Bookers adresse</th>
-                                <th>Bookers e-mail</th>
-                                <th>Bookers phone nr</th>
-                                <th>Size of bookers floor</th>
-
-
+                                <th scope="col">Booking start</th>
+                                <th scope="col">Booking end</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Name of booker</th>
+                                <th scope="col">Bookers adresse</th>
+                                <th scope="col">Bookers e-mail</th>
+                                <th scope="col">Bookers phone nr</th>
+                                <th scope="col">Size of bookers floor</th>
                             </tr>
                             </thead>
                             <tbody id="allBookings">
@@ -557,7 +561,7 @@
                                 <td th:text="${allBookings.mail}"/>
                                 <td th:text="${allBookings.telefon}"/>
                                 <td th:text="${allBookings.kvdm}"/>
-                                <td th:hidden="${booking.id}"/>
+                                <!--<td th:hidden="${booking.id}"/>-->
                             </tr>
 
                             </tbody>
@@ -589,5 +593,7 @@
         });
     </script>
 </div>
+<script type="text/javascript" src="./resources/plugins/jquery-3.2.1/js/jquery.min.js"></script>
+<script type="text/javascript" src="./resources/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
