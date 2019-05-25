@@ -177,7 +177,7 @@ public class MainController {
         bookingService.confirm(idForConfirm);
         logger.info("mail sent");
 
-        return "redirect:/admin";
+        return "redirect:/adminBooking";
     }
 
     @GetMapping("/cancel/{id}")
