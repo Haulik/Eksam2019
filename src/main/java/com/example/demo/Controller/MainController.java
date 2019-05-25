@@ -39,29 +39,6 @@ public class MainController {
         return "index";
     }
 
-
-    @GetMapping("/calender")
-    public String calender() {
-
-        return "calender";
-
-    }
-
-    @GetMapping("/AdminTest")
-    public String AdminTest(Model model) throws SQLException {
-        model.addAttribute("booking", new Booking());
-        model.addAttribute("allAvailable", bookingService.getAllAvailable());
-        model.addAttribute("allConfirmed", bookingService.getAllConfirmed());
-        model.addAttribute("allBooked", bookingService.getAllBooked());
-        model.addAttribute("allBookings", bookingService.getAllBooking());
-
-
-
-        logger.info("admin page called by: "+myAccessDeniedHandler.getUserName());
-        return "AdminTest";
-
-    }
-
     @GetMapping("/adminBooking")
     public String adminBooking(Model model) throws SQLException {
         model.addAttribute("booking", new Booking());
@@ -177,7 +154,7 @@ public class MainController {
         bookingService.confirm(idForConfirm);
         logger.info("mail sent");
 
-        return "redirect:/admin";
+        return "redirect:/adminBooking";
     }
 
     @GetMapping("/cancel/{id}")

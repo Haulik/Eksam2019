@@ -1,173 +1,533 @@
-<!DOCTYPE HTML>
-
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://momentjs.com/downloads/moment-with-locales.js"></script>
+    <script src="http://momentjs.com/downloads/moment-timezone-with-data.js"></script>
 </head>
+<style>
+    h1.page-header {
+        margin-top: -5px;
+    }
+
+    .sidebar {
+        padding-left: 0;
+    }
+
+    .main-container {
+        background: #FFF;
+        padding-top: 15px;
+        margin-top: -20px;
+    }
+
+    .footer {
+        width: 100%;
+    }
+
+    :focus {
+        outline: none;
+    }
+
+    .side-menu {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: #f8f8f8;
+        border-right: 1px solid #e7e7e7;
+    }
+    .side-menu .navbar {
+        border: none;
+    }
+    .side-menu .navbar-header {
+        width: 100%;
+        border-bottom: 1px solid #e7e7e7;
+    }
+    .side-menu .navbar-nav .active a {
+        background-color: transparent;
+        margin-right: -1px;
+        border-right: 5px solid #e7e7e7;
+    }
+    .side-menu .navbar-nav li {
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid #e7e7e7;
+    }
+    .side-menu .navbar-nav li a {
+        padding: 15px;
+    }
+    .side-menu .navbar-nav li a .glyphicon {
+        padding-right: 10px;
+    }
+    .side-menu #dropdown {
+        border: 0;
+        margin-bottom: 0;
+        border-radius: 0;
+        background-color: transparent;
+        box-shadow: none;
+    }
+    .side-menu #dropdown .caret {
+        float: right;
+        margin: 9px 5px 0;
+    }
+    .side-menu #dropdown .indicator {
+        float: right;
+    }
+    .side-menu #dropdown > a {
+        border-bottom: 1px solid #e7e7e7;
+    }
+    .side-menu #dropdown .panel-body {
+        padding: 0;
+        background-color: #f3f3f3;
+    }
+    .side-menu #dropdown .panel-body .navbar-nav {
+        width: 100%;
+    }
+    .side-menu #dropdown .panel-body .navbar-nav li {
+        padding-left: 15px;
+        border-bottom: 1px solid #e7e7e7;
+    }
+    .side-menu #dropdown .panel-body .navbar-nav li:last-child {
+        border-bottom: none;
+    }
+    .side-menu #dropdown .panel-body .panel > a {
+        margin-left: -20px;
+        padding-left: 35px;
+    }
+    .side-menu #dropdown .panel-body .panel-body {
+        margin-left: -15px;
+    }
+    .side-menu #dropdown .panel-body .panel-body li {
+        padding-left: 30px;
+    }
+    .side-menu #dropdown .panel-body .panel-body li:last-child {
+        border-bottom: 1px solid #e7e7e7;
+    }
+    .side-menu #search-trigger {
+        background-color: #f3f3f3;
+        border: 0;
+        border-radius: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 15px 18px;
+    }
+    .side-menu .brand-name-wrapper {
+        min-height: 50px;
+    }
+    .side-menu .brand-name-wrapper .navbar-brand {
+        display: block;
+    }
+    .side-menu #search {
+        position: relative;
+        z-index: 1000;
+    }
+    .side-menu #search .panel-body {
+        padding: 0;
+    }
+    .side-menu #search .panel-body .navbar-form {
+        padding: 0;
+        padding-right: 50px;
+        width: 100%;
+        margin: 0;
+        position: relative;
+        border-top: 1px solid #e7e7e7;
+    }
+    .side-menu #search .panel-body .navbar-form .form-group {
+        width: 100%;
+        position: relative;
+    }
+    .side-menu #search .panel-body .navbar-form input {
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        width: 100%;
+        height: 50px;
+    }
+    .side-menu #search .panel-body .navbar-form .btn {
+        position: absolute;
+        right: 0;
+        top: 0;
+        border: 0;
+        border-radius: 0;
+        background-color: #f3f3f3;
+        padding: 15px 18px;
+    }
+    /* Main body section */
+    .side-body {
+        margin-left: 310px;
+    }
+    /* small screen */
+    @media (max-width: 768px) {
+        .side-menu {
+            position: relative;
+            width: 100%;
+            height: 0;
+            border-right: 0;
+        }
+
+        .side-menu .navbar {
+            z-index: 999;
+            position: relative;
+            height: 0;
+            min-height: 0;
+            background-color:none !important;
+            border-color: none !important;
+        }
+        .side-menu .brand-name-wrapper .navbar-brand {
+            display: inline-block;
+        }
+        /* Slide in animation */
+        @-moz-keyframes slidein {
+            0% {
+                left: -300px;
+            }
+            100% {
+                left: 10px;
+            }
+        }
+        @-webkit-keyframes slidein {
+            0% {
+                left: -300px;
+            }
+            100% {
+                left: 10px;
+            }
+        }
+        @keyframes slidein {
+            0% {
+                left: -300px;
+            }
+            100% {
+                left: 10px;
+            }
+        }
+        @-moz-keyframes slideout {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: -300px;
+            }
+        }
+        @-webkit-keyframes slideout {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: -300px;
+            }
+        }
+        @keyframes slideout {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: -300px;
+            }
+        }
+        /* Slide side menu*/
+        /* Add .absolute-wrapper.slide-in for scrollable menu -> see top comment */
+        .side-menu-container > .navbar-nav.slide-in {
+            -moz-animation: slidein 300ms forwards;
+            -o-animation: slidein 300ms forwards;
+            -webkit-animation: slidein 300ms forwards;
+            animation: slidein 300ms forwards;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+        .side-menu-container > .navbar-nav {
+            /* Add position:absolute for scrollable menu -> see top comment */
+            position: fixed;
+            left: -300px;
+            width: 300px;
+            top: 43px;
+            height: 100%;
+            border-right: 1px solid #e7e7e7;
+            background-color: #f8f8f8;
+            overflow: auto;
+            -moz-animation: slideout 300ms forwards;
+            -o-animation: slideout 300ms forwards;
+            -webkit-animation: slideout 300ms forwards;
+            animation: slideout 300ms forwards;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+        @-moz-keyframes bodyslidein {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: 300px;
+            }
+        }
+        @-webkit-keyframes bodyslidein {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: 300px;
+            }
+        }
+        @keyframes bodyslidein {
+            0% {
+                left: 0;
+            }
+            100% {
+                left: 300px;
+            }
+        }
+        @-moz-keyframes bodyslideout {
+            0% {
+                left: 300px;
+            }
+            100% {
+                left: 0;
+            }
+        }
+        @-webkit-keyframes bodyslideout {
+            0% {
+                left: 300px;
+            }
+            100% {
+                left: 0;
+            }
+        }
+        @keyframes bodyslideout {
+            0% {
+                left: 300px;
+            }
+            100% {
+                left: 0;
+            }
+        }
+        /* Slide side body*/
+        .side-body {
+            margin-left: 5px;
+            margin-top: 70px;
+            position: relative;
+            -moz-animation: bodyslideout 300ms forwards;
+            -o-animation: bodyslideout 300ms forwards;
+            -webkit-animation: bodyslideout 300ms forwards;
+            animation: bodyslideout 300ms forwards;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+        .body-slide-in {
+            -moz-animation: bodyslidein 300ms forwards;
+            -o-animation: bodyslidein 300ms forwards;
+            -webkit-animation: bodyslidein 300ms forwards;
+            animation: bodyslidein 300ms forwards;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+        /* Hamburger */
+        .navbar-toggle-sidebar {
+            border: 0;
+            float: left;
+            padding: 18px;
+            margin: 0;
+            border-radius: 0;
+            background-color: #f3f3f3;
+        }
+        /* Search */
+        #search .panel-body .navbar-form {
+            border-bottom: 0;
+        }
+        #search .panel-body .navbar-form .form-group {
+            margin: 0;
+        }
+        .side-menu .navbar-header {
+            /* this is probably redundant */
+            position: fixed;
+            z-index: 3;
+            background-color: #f8f8f8;
+        }
+        /* Dropdown tweek */
+        #dropdown .panel-body .navbar-nav {
+            margin: 0;
+        }
+    }
+</style>
 <body>
 
 
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
+                MENU
+            </button>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                Administrator
+            </a>
+        </div>
 
-<div class="container">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/" target="_blank">Visit Site</a></li>
+                <li class="dropdown ">
+                    <a>
+                        <form th:action="@{/logout}" method="post" class="dropdown ">
+                            <input type="submit" value="Sign Out" class="nav navbar-nav"/>
+                        </form></a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>  	<div class="container-fluid main-container">
+    <div class="col-md-2 sidebar">
+        <div class="row">
+            <!-- uncomment code for absolute positioning tweek see top comment in css -->
+            <div class="absolute-wrapper"> </div>
+            <!-- Menu -->
+            <div class="side-menu">
+                <nav class="navbar navbar-default" role="navigation">
+                    <!-- Main Menu -->
+                    <div class="side-menu-container">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="admin"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+                            <li><a href="adminCreateBooking"><span class="glyphicon glyphicon-plane"></span> Create booking</a></li>
+                            <li><a href="adminBooking"><span class="glyphicon glyphicon-cloud"></span> Bookings</a></li>
+                            <img src="https://i.imgur.com/VKkRjuB.png" alt="Trulli" width="210" height="75">
 
-    <div class="starter-template">
-        <h1>Admin page (Spring Security protected)</h1>
+                            <!-- Dropdown-->
 
-        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out"/>
-        </form>
 
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </nav>
+
+            </div>
+        </div>  		</div>
+    <div class="col-md-10 content">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Dashboard
+            </div>
+            <div class="panel-body">
+                <div class="container">
+
+                    <div class="starter-template">
+                        <h1>Admin page (Spring Security protected)</h1>
+
+                        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+
+                    </div>
+                </div>
+            </div>
+            <table border="0" bgcolor="#000000" cellspacing="0" cellpadding="3" align="center">
+                <tr>
+                    <td width="100%">
+                        <h3>Steffens private Crystal Ball</h3>
+
+                        <p>Kun ja/nej spørgsmål!</p>
+                        <p>For alle dine virksomhed ideer</p>
+                        <p>Brug med omtanke</p>
+                        <table width="40%" border="0">
+                            <tr>
+                                <td>
+                                    <form name="input1" method="post">
+                                        <input name="textfield" size=63>
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+                        <table width="8%" border="0">
+                            <tr>
+                                <td>
+                                    <form method="post">
+                                        <input type="button" name="button1" value="Ask Me!"
+                                               onClick="getAnswers()">
+                                    </form>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+            </table>
+
+        </div>
     </div>
-
-    <div>
-        <form id="form" class="box2" th:action="@{/admin}" th:object="${admin}" method="post">
-            <h1>Create a booking!</h1>
-
-            <input type="datetime-local" name="booking Start" required placeholder="Start time of booking yyyy-MM-DD hh:mm:ss" th:field="${booking.bookingStart}"/>
-            <input type="datetime-local" name="booking end" required placeholder="End time of booking yyyy-MM-dd hh:mm:ss" th:field="${booking.bookingEnd}"/>
-            <input onclick="Sure()" type="submit" name ="Submit" value="Submit" class="frontsize-l" id="submit-button"/>
-
-        </form>
-    </div>
-
-    <div class ="all available">
-
-        <table id="available">
-            <h2>all availible</h2>
-            <thead>
-            <tr class="header">
-                <th>Booking start</th>
-                <th>Booking end</th>
+    <footer class="pull-left footer">
+        <p class="col-md-12">
+        <hr class="divider">
+        </p>
+    </footer>
 
 
-            </tr>
-            </thead>
-            <tbody id="available2">
-            <tr th:each="allAvailable: ${allAvailable}">
-                <td th:text="${allAvailable.bookingStart}"/>
-                <td th:text="${allAvailable.bookingEnd}"/>
+    <script language="JavaScript">
 
-            </tr>
+        function getAnswers() {
 
-            </tbody>
-        </table>
-    </div>
+            time = new Date()
+            randominteger = time.getSeconds()
 
-    <div class ="all confirmed">
+            if (document.input1.textfield.value == "") {
+                alert("STEFFEN! Du skal altså skrive noget i feltet først...")
+                return
+            }
 
-        <table id="confirmed">
-            <h2>all confirmed</h2>
-            <thead>
-            <tr class="header">
-                <th>Booking start</th>
-                <th>Booking end</th>
-                <th>Status</th>
-                <th>Name of booker</th>
-                <th>Bookers adresse</th>
-                <th>Bookers e-mail</th>
-                <th>Bookers phone nr</th>
-                <th>Size of bookers floor</th>
-                <th>ID of booking</th>
+            if (randominteger <= 3) answer="Har jonathan været i byen igår?."
+            if ((randominteger >= 4) && (randominteger <= 6)) answer ="Ja, ca 65% chance ."
+            if ((randominteger >= 7) && (randominteger <= 9)) answer ="Oh come on! No way!"
+            if ((randominteger >= 10) && (randominteger <= 12)) answer ="HAHAHAH, Cute."
+            if ((randominteger >= 13) && (randominteger <= 15)) answer ="Kom Elisha for sent i skole?"
+            if ((randominteger >= 16) && (randominteger <= 18)) answer ="Brugte Thomas en time på at skrive alt det her?"
+            if ((randominteger >= 19) && (randominteger <= 21)) answer ="Mine kilder siger nej."
+            if ((randominteger >= 22) && (randominteger <= 24)) answer ="Tror Anders på det?."
+            if ((randominteger >= 25) && (randominteger <= 27)) answer ="HAHAHAHHAHA, du må være lige så dum som en dør, hvis du tror på det."
+            if ((randominteger >= 28) && (randominteger <= 30)) answer ="Koncentrer dig og spørg igen"
+            if ((randominteger >= 31) && (randominteger <= 33)) answer ="Unskyld, men du er ikke værdig."
+            if ((randominteger >= 34) && (randominteger <= 36)) answer ="Det sker ikke"
+            if ((randominteger >= 37) && (randominteger <= 39)) answer ="Selvføgelig"
+            if ((randominteger >= 40) && (randominteger <= 42)) answer ="Beep Beep, du er noget Crystal ball telefon svare, ring tilbage senere."
+            if ((randominteger >= 43) && (randominteger <= 45)) answer ="Giver oskar os 12? :)."
+            if ((randominteger >= 46) && (randominteger <= 48)) answer ="Who said ambiguous answers were bad? Not me, so YES!"
+            if ((randominteger >= 49) && (randominteger <= 51)) answer ="God ide, rigtig god ide."
+            if ((randominteger >= 52) && (randominteger <= 54)) answer ="YES"
+            if ((randominteger >= 55) && (randominteger <= 57)) answer ="The sun will rise in the east and set in the west. Thank you Captain Obvious. YES!"
+            if ((randominteger >= 58) && (randominteger <= 60)) answer ="I'm laughing hard, very hard. You'd better ask again."
 
+            var newWindow = window.open("","Results","width=300,height=300")
+            newWindow.document.write("<html><body bgcolor='#000000' text='#FFFFCC' link='#00FFFF' alink='#000066' vlink='#6666FF'>")
+            newWindow.document.write("<P align='center'>Dit Spørgsmål:</P><P></P>")
+            newWindow.document.write("<P align='center'>" + document.input1.textfield.value + "</P>")
+            newWindow.document.write("<P></P><P></P><P></P><P align='center'>The Great Crystal Ball Har Svaret:</P><P></P>")
+            newWindow.document.write("")
+            newWindow.document.write("<P align='center'>" + answer + "</P>")
+            newWindow.document.write("<P></P><P></P><P align='center'><A HREF='javascript:window.close()'>Close Me</A></P>")
+            newWindow.document.write("<P></P><P></P><P align='center'><img src='https://i.imgur.com/VKkRjuB.png' width=\"75%\"></P>")
+        }
 
-            </tr>
-            </thead>
-            <tbody id="confirmed2">
-            <tr th:each="allConfirmed: ${allConfirmed}">
-                <td th:text="${allConfirmed.bookingStart}"/>
-                <td th:text="${allConfirmed.bookingEnd}"/>
-                <td th:text="${allConfirmed.status}"/>
-                <td th:text="${allConfirmed.name}"/>
-                <td th:text="${allConfirmed.adresse}"/>
-                <td th:text="${allConfirmed.mail}"/>
-                <td th:text="${allConfirmed.telefon}"/>
-                <td th:text="${allConfirmed.kvdm}"/>
-                <td th:text="${allConfirmed.id}"/>
-            </tr>
+    </script>
+    <script>
+        $(function () {
+            $('.navbar-toggle-sidebar').click(function () {
+                $('.navbar-nav').toggleClass('slide-in');
+                $('.side-body').toggleClass('body-slide-in');
+                $('#search').removeClass('in').addClass('collapse').slideUp(200);
+            });
 
-            </tbody>
-        </table>
-    </div>
-
-    <div class ="all booked">
-
-        <table id="booked">
-            <h2>all booked, but not confirmed</h2>
-            <thead>
-            <tr class="header">
-                <th>Booking start</th>
-                <th>Booking end</th>
-                <th>Status</th>
-                <th>Name of booker</th>
-                <th>Bookers adresse</th>
-                <th>Bookers e-mail</th>
-                <th>Bookers phone nr</th>
-                <th>Size of bookers floor</th>
-                <th>Confirm</th>
-
-
-            </tr>
-            </thead>
-            <tbody id="booked2">
-            <tr th:each="allBooked: ${allBooked}">
-                <td th:text="${allBooked.bookingStart}"/>
-                <td th:text="${allBooked.bookingEnd}"/>
-                <td th:text="${allBooked.status}"/>
-                <td th:text="${allBooked.name}"/>
-                <td th:text="${allBooked.adresse}"/>
-                <td th:text="${allBooked.mail}"/>
-                <td th:text="${allBooked.telefon}"/>
-                <td th:text="${allBooked.kvdm}"/>
-                <td th:hidden="${allBooked.id}"/>
-                <td>
-                    <a th:href="${'confirm/'+allBooked.id}">Click to confirm</a>
-                <td/>
-            </tr>
-
-            </tbody>
-        </table>
-    </div>
-
-    <div class ="all bookings">
-
-        <table id="allBookings2">
-            <h2>all bookings</h2>
-            <thead>
-            <tr class="header">
-                <th>Booking start</th>
-                <th>Booking end</th>
-                <th>Status</th>
-                <th>Name of booker</th>
-                <th>Bookers adresse</th>
-                <th>Bookers e-mail</th>
-                <th>Bookers phone nr</th>
-                <th>Size of bookers floor</th>
-
-
-            </tr>
-            </thead>
-            <tbody id="allBookings">
-            <tr th:each="allBookings: ${allBookings}">
-                <td th:text="${allBookings.bookingStart}"/>
-                <td th:text="${allBookings.bookingEnd}"/>
-                <td th:text="${allBookings.status}"/>
-                <td th:text="${allBookings.name}"/>
-                <td th:text="${allBookings.adresse}"/>
-                <td th:text="${allBookings.mail}"/>
-                <td th:text="${allBookings.telefon}"/>
-                <td th:text="${allBookings.kvdm}"/>
-                <td th:hidden="${booking.id}"/>
-            </tr>
-
-            </tbody>
-        </table>
-    </div>
-
+            $('#search-trigger').click(function () {
+                $('.navbar-nav').removeClass('slide-in');
+                $('.side-body').removeClass('body-slide-in');
+                $('.search-input').focus();
+            });
+        });
+    </script>
 </div>
-<!-- /.container -->
-
-
-
 </body>
 </html>

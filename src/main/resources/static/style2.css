@@ -49,7 +49,7 @@ html, body {
 .carousel-caption h1{
     font-size: 500%;
     text-transform: uppercase;
-   /*text-shadow: 1px 1px 10px #000;*/
+    /*text-shadow: 1px 1px 10px #000;*/
 }
 .carousel-caption h3{
     font-size: 200%;
@@ -97,7 +97,7 @@ html, body {
 {
     color: #2163af;
 }
-.fa-mobile-phone, .fa-envelope-o, .fa-home
+.fa-mobile-phone, .fa-envelope-o, .fa-home, .fa-homecss
 {
     font-size: 4rem;
     margin: 1rem;
@@ -289,4 +289,17 @@ hr.light-100 {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.bg-primarycss {
+    color: #fff;
+    background-color: #7f5722;
+}
+
+.bg-successcss {
+    background-color: #7f5722!important;
+}
+
+.fa-homecss {
+    color: #fff;
 }

@@ -1,9 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=poppins:400,500,700');
 
+
+#section1 {
+    height: 600px;
+    background-color: pink;
+}
+
+#section2 {
+    height: 600px;
+    background-color: yellow;
+}
 html, body {
     scroll-behavior: smooth;
     height: 100%;
     width: 100%;
+    margin: 0;
+    padding: 0;
+    /*overflow-x: hidden;*/
     font-family: 'poppins', sans-serif;
     color: #222;
 }
@@ -24,26 +37,38 @@ html, body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    color: #fff;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+.carousel-caption .border h1{
+    color: #fff;
+    padding:20px;
+    opacity: 0.6;
 }
 .carousel-caption h1{
     font-size: 500%;
     text-transform: uppercase;
-    text-shadow: 1px, 1px 10px #000;
+    /*text-shadow: 1px 1px 10px #000;*/
 }
 .carousel-caption h3{
     font-size: 200%;
-    font-weight: 500%;
+    font-weight: 500;
     text-shadow: 1px 1px 15px #000;
     padding-right: 1rem;
 }
+.display-2{
+    font-weight: 600;
+}
 .btn-primary{
-    background-color: #8cc63f;
-    border: 1px solid #9cc95c;
+    background-color: #7f5722;
+    border: 1px solid #fff;
 }
 .btn-primary:hover{
-    background-color: #79a536;
-    border: 1px solid #7cb231;
+    background-color: #493826;
+    border: 1px solid #5d513c;
 }
+
 .jumbotron{
     padding: 1rem;
     border-radius: 0;
@@ -62,16 +87,18 @@ html, body {
     margin-top: .3rem;
     margin-bottom: 1rem;
 }
-.fa-automobile{
+.fa-mobile-phone{
     color: #e54d26;
 }
 .fa-envelope-o{
     color: #563d7c;
 }
-.fa-cogs{
-    color: #2163af;
+.fa-home
+{
+    color: #ececec;
 }
-.fa-automobile, .fa-envelope-o, .fa-cogs{
+.fa-mobile-phone, .fa-envelope-o, .fa-home, .fa-homecss
+{
     font-size: 4rem;
     margin: 1rem;
 }
@@ -151,7 +178,7 @@ hr.light-100 {
     }
     .carousel-caption h3{
         font-size: 140%;
-        font-weight: 400%;
+        font-weight: 400;
         padding-right: .2rem;
     }
     .carousel-caption .btn{
@@ -180,7 +207,7 @@ hr.light-100 {
     }
     .carousel-caption h3{
         font-size: 110%;
-        font-weight: 400%;
+        font-weight: 400;
         padding-right: .2rem;
     }
     .carousel-caption .btn{
@@ -206,12 +233,69 @@ hr.light-100 {
 }
 .parallax2 {
     /* The image used */
-    background-image: url('https://www.carpetcourt.com.au/media/catalog/category/SPRING_VINYL_TopBanner.jpg');
+    background-image: url('http://salemfloors.net/_imgstore/5/1358105/page_flooring_f7pGKe5mkprWUw1vmBuFq/joLd7tC7Ezx_QSf1-1y93wzNW3w.png');
     /* Full height */
-    height: 120%;
+    height: 500px;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    opacity: 0.8;
+    transform: scale(1.1);
+    transform: scale(1.1);
+    z-index: -1;
+    background-color: #2f2f2f;
+}
+.parallax3 {
+    /* The image used */
+    background-image: url('http://thesocialmedia.site/wp-content/uploads/2018/11/wood-floor-get-beautiful-floor-refinishing-services-at-rates-you-can-afford-wood-floor-polish-service.jpg');
+    /* Full height */
+    height: 500px;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    opacity: 0.8;
+    transform: scale(1.1);
+    transform: scale(1.1);
+    z-index: -1;
+}
+
+.ptext{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+    font-size: 27px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+
+.ptext .border{
+    background-color: #111;
+    color: #fff;
+    padding: 20px;
+}
+
+.ptext .border.trans{
+    background-color: transparent;
+}
+.card-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bg-primarycss {
+    color: #fff;
+    background-color: #7f5722;
+}
+
+.bg-successcss {
+    background-color: #7f5722!important;
 }
