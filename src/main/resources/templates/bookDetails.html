@@ -19,8 +19,8 @@
             <input type="text" name="booker name"  placeholder="Enter name" th:field="${booker.name}" required />
             <input type="text" name="booker adresse"  placeholder="Enter your adresse" th:field="${booker.adresse}" required />
             <input type="email" name="booker mail" placeholder="Enter your e-mail" th:field="${booker.mail}" required />
-            <input type="number" name="booker phone" placeholder="Enter your phone number" th:field="${booker.telefon}" required />
-            <input type="number" name="booker size"  placeholder="Enter the size of your project in m2" th:field="${booker.kvdm}" required />
+            <input type="number" name="booker phone" value="" placeholder="Enter your phone number" th:field="${booker.telefon}" required />
+            <input type="number" name="booker size" value={Number(this.state.myNumber).toString()}  placeholder="Enter the size of your project in m2" th:field="${booker.kvdm}" required />
 
             <input onclick="Sure()" type="submit" name ="Submit" value="Submit" class="frontsize-l" id="submit-button"/>
 
