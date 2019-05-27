@@ -25,8 +25,10 @@ public class Mailer {
     public String canceltemplate(String startTime, String endTime, int id, String name){
 
         String template = "Hej Steffen,\n"+
-                            "Din kunde: "+name+" har desværre aflyst sin tid: "+startTime+" - "+endTime+"\n" +
-                            "Tiden med id: "+id+" er nu blevet ledig igen";
+
+                "Din kunde: "+name+" har desværre aflyst sin tid: "+startTime+" - "+endTime+"\n" +
+                "Tiden med id: "+id+" er nu blevet ledig igen";
+
 
         return template;
     }
@@ -59,9 +61,10 @@ public class Mailer {
         multipart.addBodyPart(messageBodyPart);
         MimeBodyPart attachPart = new MimeBodyPart();
 
-        attachPart.attachFile("/var/tmp/image19.png");
-        multipart.addBodyPart(attachPart);
+        //attachPart.attachFile("/var/tmp/image19.png");
+        //multipart.addBodyPart(attachPart);
         //msg.setContent(multipart);
         Transport.send(msg);
     }
+
 }

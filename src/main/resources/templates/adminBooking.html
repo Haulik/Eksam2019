@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
 </head>
 <style>
     h1.page-header {
         margin-top: -5px;
     }
-
     .sidebar {
         padding-left: 0;
     }
-
     .main-container {
         background: #FFF;
         padding-top: 15px;
         margin-top: -20px;
     }
-
     .footer {
         width: 100%;
     }
-
     :focus {
         outline: none;
     }
-
     .side-menu {
         position: relative;
         width: 100%;
@@ -166,7 +166,6 @@
             height: 0;
             border-right: 0;
         }
-
         .side-menu .navbar {
             z-index: 999;
             position: relative;
@@ -349,10 +348,10 @@
             margin: 0;
         }
     }
+    .thead-dark th{color:#fff;background-color:#343a40;border-color:#454d55}.table
+                                                                            .table-striped tbody tr:nth-of-type(odd){background-color:rgba(0,0,0,.05)}.table-hover tbody tr:hover{color:#212529;background-color:rgba(0,0,0,.075)}.table-primary,.table-primary>td,.table-primary>th{background-color:#b8daff}.table-primary
 </style>
 <body>
-
-
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -370,7 +369,6 @@
                 Administrator
             </a>
         </div>
-
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -395,17 +393,13 @@
                     <!-- Main Menu -->
                     <div class="side-menu-container">
                         <ul class="nav navbar-nav">
-                            <li><a href="AdminTest"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+                            <li><a href="admin"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
                             <li><a href="adminCreateBooking"><span class="glyphicon glyphicon-plane"></span> Create booking</a></li>
                             <li class="active"><a href="adminBooking"><span class="glyphicon glyphicon-cloud"></span> Bookings</a></li>
                             <img src="https://i.imgur.com/VKkRjuB.png" alt="Trulli" width="210" height="75">
-
-
-
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </nav>
-
             </div>
         </div>  		</div>
     <div class="col-md-10 content">
@@ -415,34 +409,25 @@
             </div>
             <div class="panel-body">
                 <div class="container">
-
-                    <div class="starter-template">
+                    <div class="starter-template text-center">
                         <h1>All Bookings</h1>
-
-                        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-
                     </div>
-
-
                     <div class ="all available">
-
-                        <table id="available">
-                            <h2>all availible</h2>
-                            <thead>
-                            <tr class="header">
-                                <th>Booking start</th>
-                                <th>Booking end</th>
-                                <th>Status</th>
-                                <th>Name of booker</th>
-                                <th>Bookers adresse</th>
-                                <th>Bookers e-mail</th>
-                                <th>Bookers phone nr</th>
-                                <th>Size of bookers floor</th>
-
-
+                        <table class="table table-striped">
+                            <h2>All available</h2>
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Booking start</th>
+                                <th scope="col">Booking end</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Name of booker</th>
+                                <th scope="col">Bookers adresse</th>
+                                <th scope="col">Bookers e-mail</th>
+                                <th scope="col">Bookers phone nr</th>
+                                <th scope="col">Size of bookers floor</th>
                             </tr>
                             </thead>
-                            <tbody id="available2">
+                            <tbody>
                             <tr th:each="allAvailable: ${allAvailable}">
                                 <td th:text="${allAvailable.bookingStart}"/>
                                 <td th:text="${allAvailable.bookingEnd}"/>
@@ -454,27 +439,22 @@
                                 <td th:text="${allAvailable.kvdm}"/>
                                 <td th:hidden="${allAvailable.id}"/>
                             </tr>
-
                             </tbody>
                         </table>
                     </div>
-
                     <div class ="all confirmed">
-
-                        <table id="confirmed">
-                            <h2>all confirmed</h2>
-                            <thead>
+                        <table id="confirmed" class="table table-striped">
+                            <h2>All confirmed</h2>
+                            <thead class="thead-dark">
                             <tr class="header">
-                                <th>Booking start</th>
-                                <th>Booking end</th>
-                                <th>Status</th>
-                                <th>Name of booker</th>
-                                <th>Bookers adresse</th>
-                                <th>Bookers e-mail</th>
-                                <th>Bookers phone nr</th>
-                                <th>Size of bookers floor</th>
-
-
+                                <th scope="col">Booking start</th>
+                                <th scope="col">Booking end</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Name of booker</th>
+                                <th scope="col">Bookers adresse</th>
+                                <th scope="col">Bookers e-mail</th>
+                                <th scope="col">Bookers phone nr</th>
+                                <th scope="col">Size of bookers floor</th>
                             </tr>
                             </thead>
                             <tbody id="confirmed2">
@@ -489,27 +469,23 @@
                                 <td th:text="${allConfirmed.kvdm}"/>
                                 <td th:hidden="${allConfirmed.id}"/>
                             </tr>
-
                             </tbody>
                         </table>
                     </div>
-
                     <div class ="all booked">
-
-                        <table id="booked">
-                            <h2>all booked, but not confirmed</h2>
-                            <thead>
+                        <table id="booked" class="table table-striped">
+                            <h2>All booked, but not confirmed</h2>
+                            <thead class="thead-dark">
                             <tr class="header">
-                                <th>Booking start</th>
-                                <th>Booking end</th>
-                                <th>Status</th>
-                                <th>Name of booker</th>
-                                <th>Bookers adresse</th>
-                                <th>Bookers e-mail</th>
-                                <th>Bookers phone nr</th>
-                                <th>Size of bookers floor</th>
-
-
+                                <th scope="col">Booking start</th>
+                                <th scope="col">Booking end</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Name of booker</th>
+                                <th scope="col">Bookers adresse</th>
+                                <th scope="col">Bookers e-mail</th>
+                                <th scope="col">Bookers phone nr</th>
+                                <th scope="col">Size of bookers floor</th>
+                                <th scope="col">Confirm</th>
                             </tr>
                             </thead>
                             <tbody id="booked2">
@@ -523,28 +499,24 @@
                                 <td th:text="${allBooked.telefon}"/>
                                 <td th:text="${allBooked.kvdm}"/>
                                 <td th:hidden="${allBooked.id}"/>
+                                <td><a th:href="${'confirm/'+allBooked.id}">Click to confirm</a></td>
                             </tr>
-
                             </tbody>
                         </table>
                     </div>
-
                     <div class ="all bookings">
-
-                        <table id="allBookings2">
-                            <h2>all bookings</h2>
-                            <thead>
+                        <table id="allBookings2" class="table table-striped">
+                            <h2>All bookings</h2>
+                            <thead class="thead-dark">
                             <tr class="header">
-                                <th>Booking start</th>
-                                <th>Booking end</th>
-                                <th>Status</th>
-                                <th>Name of booker</th>
-                                <th>Bookers adresse</th>
-                                <th>Bookers e-mail</th>
-                                <th>Bookers phone nr</th>
-                                <th>Size of bookers floor</th>
-
-
+                                <th scope="col">Booking start</th>
+                                <th scope="col">Booking end</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Name of booker</th>
+                                <th scope="col">Bookers adresse</th>
+                                <th scope="col">Bookers e-mail</th>
+                                <th scope="col">Bookers phone nr</th>
+                                <th scope="col">Size of bookers floor</th>
                             </tr>
                             </thead>
                             <tbody id="allBookings">
@@ -557,13 +529,11 @@
                                 <td th:text="${allBookings.mail}"/>
                                 <td th:text="${allBookings.telefon}"/>
                                 <td th:text="${allBookings.kvdm}"/>
-                                <td th:hidden="${booking.id}"/>
+                                <!--<td th:hidden="${booking.id}"/>-->
                             </tr>
-
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -580,7 +550,6 @@
                 $('.side-body').toggleClass('body-slide-in');
                 $('#search').removeClass('in').addClass('collapse').slideUp(200);
             });
-
             $('#search-trigger').click(function () {
                 $('.navbar-nav').removeClass('slide-in');
                 $('.side-body').removeClass('body-slide-in');
@@ -589,5 +558,7 @@
         });
     </script>
 </div>
+<script type="text/javascript" src="./resources/plugins/jquery-3.2.1/js/jquery.min.js"></script>
+<script type="text/javascript" src="./resources/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
