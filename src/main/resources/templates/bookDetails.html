@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<html lang="en">
-
-
 <head>
     <meta charset="UTF-8">
+
+    <!-- device-width initial scale one for mobile websites -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BookTime</title>
+    <title>Eksamens projekt</title>
     <!-- booststrap css file for bootstrap 4 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!-- latest version of jQuery -->
@@ -22,136 +22,54 @@
     <link rel="stylesheet" type="text/css" href="../static/style.css" th:href="@{/style.css}">
 
 </head>
-<body>
 <style>
-    .ds-btn li{ list-style:none; float:left; padding:10px; }
-    .ds-btn li a span{padding-left:15px;padding-right:5px;width:100%;display:inline-block; text-align:left;}
-    .ds-btn li a span small{width:100%; display:inline-block; text-align:left;}
-    .frb-group {
-        margin: 15px 0;
+    .map-container-9,
+    .map-container-10,
+    .map-container-11 {
+        overflow:hidden;
+        padding-bottom:56.25%;
+        position:relative;
+        height:0;
     }
-    .frb {
-        margin-top: 15px;
-    }
-    .frb input[type="radio"]:empty,
-    .frb input[type="checkbox"]:empty {
-        display: none;
-    }
-    .frb input[type="radio"] ~ label:before,
-    .frb input[type="checkbox"] ~ label:before {
-        font-family: FontAwesome;
-        content: '\f096';
-        position: absolute;
-        top: 50%;
-        margin-top: -11px;
-        left: 15px;
-        font-size: 22px;
-    }
-    .frb input[type="radio"]:checked ~ label:before,
-    .frb input[type="checkbox"]:checked ~ label:before {
-        content: '\f046';
-    }
-    .frb input[type="radio"] ~ label,
-    .frb input[type="checkbox"] ~ label {
-        position: relative;
-        cursor: pointer;
-        width: 100%;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background-color: #f2f2f2;
-    }
-    .frb input[type="radio"] ~ label:focus,
-    .frb input[type="radio"] ~ label:hover,
-    .frb input[type="checkbox"] ~ label:focus,
-    .frb input[type="checkbox"] ~ label:hover {
-        box-shadow: 0px 0px 3px #333;
-    }
-    .frb input[type="radio"]:checked ~ label,
-    .frb input[type="checkbox"]:checked ~ label {
-        color: #fafafa;
-    }
-    .frb input[type="radio"]:checked ~ label,
-    .frb input[type="checkbox"]:checked ~ label {
-        background-color: #f2f2f2;
-    }
-    .frb.frb-default input[type="radio"]:checked ~ label,
-    .frb.frb-default input[type="checkbox"]:checked ~ label {
-        color: #333;
-    }
-    .frb.frb-primary input[type="radio"]:checked ~ label,
-    .frb.frb-primary input[type="checkbox"]:checked ~ label {
-        background-color: #337ab7;
-    }
-    .frb.frb-success input[type="radio"]:checked ~ label,
-    .frb.frb-success input[type="checkbox"]:checked ~ label {
-        background-color: #5cb85c;
-    }
-    .frb.frb-info input[type="radio"]:checked ~ label,
-    .frb.frb-info input[type="checkbox"]:checked ~ label {
-        background-color: #5bc0de;
-    }
-    .frb.frb-warning input[type="radio"]:checked ~ label,
-    .frb.frb-warning input[type="checkbox"]:checked ~ label {
-        background-color: #f0ad4e;
-    }
-    .frb.frb-danger input[type="radio"]:checked ~ label,
-    .frb.frb-danger input[type="checkbox"]:checked ~ label {
-        background-color: #d9534f;
-    }
-    .frb input[type="radio"]:empty ~ label span,
-    .frb input[type="checkbox"]:empty ~ label span {
-        display: inline-block;
-    }
-    .frb input[type="radio"]:empty ~ label span.frb-title,
-    .frb input[type="checkbox"]:empty ~ label span.frb-title {
-        font-size: 16px;
-        font-weight: 700;
-        margin: 5px 5px 5px 50px;
-    }
-    .frb input[type="radio"]:empty ~ label span.frb-description,
-    .frb input[type="checkbox"]:empty ~ label span.frb-description {
-        font-weight: normal;
-        font-style: italic;
-        color: #999;
-        margin: 5px 5px 5px 50px;
-    }
-    .frb input[type="radio"]:empty:checked ~ label span.frb-description,
-    .frb input[type="checkbox"]:empty:checked ~ label span.frb-description {
-        color: #fafafa;
-    }
-    .frb.frb-default input[type="radio"]:empty:checked ~ label span.frb-description,
-    .frb.frb-default input[type="checkbox"]:empty:checked ~ label span.frb-description {
-        color: #999;
+    .map-container-9 iframe
+    .map-container-10 iframe
+    .map-container-11 iframe{
+        left:0;
+        top:0;
+        height:100%;
+        width:100%;
+        position:absolute;
     }
 </style>
-
+<body>
 <!-- Navigation -->
-<div>
-    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top"  >
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="http://localhost:8080/logo.png" width="15%"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse navbarCollapse" id="navbarResponsive">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/#About">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/#Serv">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/#Team">Team</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/#Con">Connect</a>
-                    </li>
-                </ul>
-            </div>
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top"  >
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="http://localhost:8080/logo.png" width="15%"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse navbarCollapse" id="navbarResponsive">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/#About">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/#Serv">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/#Team">Team</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/#Con">Connect</a>
+                </li>
+            </ul>
         </div>
-    </nav>
-</div>
+    </div>
+</nav>
+
+
+
 
 <div class="container">
     <div class="row">
@@ -159,36 +77,73 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Booktime</li>
+                    <li class="breadcrumb-item" ><a href="/bookTime">Booktime</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">BookDetail</li>
+
                 </ol>
             </nav>
         </div>
     </div>
 </div>
 
-
 <div class="container">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <h3 class="text-center title-center">These are the available time-slots.</h3>
-        <div class="row">
-            <ul class="ds-btn" th:each="bookings: ${bookings}">
-                <li class="row">
-                    <a class="btn btn-lg btn-primary" th:href="${'bookDetails/'+bookings.id}">
-                        <i class="fa fa-clock-o pull-left"></i>
-                        <span class="frb-title" th:text="${bookings.bookingStart}"></span><br/>
-                        <small><span class="frb-description pull-right" th:text="${bookings.bookingEnd}"></span></small></a>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-primarycss text-white"><i class="fa fa-envelope"></i> Bestil en tid.
+                </div>
+                <div class="card-body">
+                    <form id="form" class="box2" th:action="@{/bookDetails}" th:object="${bookDetails}" method="post">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" aria-describedby="info" placeholder="Enter name" th:field="${booker.name}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adresse">Adresse</label>
+                            <input type="text" class="form-control" id="adresse" aria-describedby="info" placeholder="Enter adresse" th:field="${booker.adresse}" required>
 
-                </li>
-            </ul>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Email</label>
+                            <input type="email" class="form-control" id="mail" aria-describedby="emailHelp" placeholder="Enter email" th:field="${booker.mail}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefon">Telefon</label>
+                            <input type="number" class="form-control" id="telefon" aria-describedby="info" placeholder="Enter Telefon" th:field="${booker.telefon}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="kvdm">Kvdm</label>
+                            <input type="number" class="form-control" id="kvdm" aria-describedby="kvdm" placeholder="0" th:field="${booker.kvdm}" required>
+                            <small id="kvdm" class="form-text text-muted">Hvor meget kvadratmeter skal der laves?</small>
+                        </div>
+                        <div class="mx-auto">
+                            <button id="btn-api" data-toggle="modal" data-target="#myModal" type="submit" class="btn btn-primary text-right">Submit</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-4">
+            <div class="card bg-light mb-3">
+                <div class="card-header bg-successcss text-white text-uppercase"><i class="fa fa-home"></i> Address</div>
+                <div class="card-body">
+                    <p>Lygten 37</p>
+                    <p>2400 København</p>
+                    <p>Denmark</p>
+                    <p>Email : steffens.biks@gmail.com</p>
+                    <p>Tel. +45 47 10 70 23</p>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalRegular">Find os!</button>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
 
 
 
-<hr class="my-4">
-<!-- Connect -->
 
+<!-- Connect -->
+<hr class="my-4">
 <div class="cntainer-fluid padding container-fluid">
     <div class="row text-center padding">
         <div class="col-12">
@@ -211,7 +166,7 @@
     <div class="container-fluid padding">
         <div class="row text-center">
             <div class="col-md-4">
-                <img src="logo.png" width="30%">
+                <img src="http://localhost:8080/logo.png" width="30%">
                 <hr class="light">
                 <p>555-555-5555</p>
                 <p>email@yemail.com</p>
@@ -243,18 +198,65 @@
     </div>
 </footer>
 
+<!-- Modal Success Popup -->
+<div class="modal fade success-popup" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="myModalLabel">Thank You !</h4>
+            </div>
+            <div class="modal-body text-center">
+                <img src="http://osmhotels.com//assets/check-true.jpg">
+                <p class="lead">Contact form successfully submitted. Thank you, We will get back to you soon!</p>
+                <a href="index.php" class="rd_more btn btn-default">Go to Home</a>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
 
+<div class="modal fade" id="modalRegular" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+
+        <!--Content-->
+        <div class="modal-content">
+
+            <!--Body-->
+            <div class="modal-body mb-0 p-0">
+
+                <!--Google map-->
+                <div id="map-container-google-2" class="" style="height: 500px">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2248.148907375196!2d12.535372215928646!3d55.70378338054035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465252496d687ed3%3A0xab513417c1575967!2sLygten+37%2C+2400+K%C3%B8benhavn!5e0!3m2!1sda!2sdk!4v1558648285430!5m2!1sda!2sdk" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+
+            </div>
+
+            <!--Footer-->
+            <div class="modal-footer justify-content-center">
+
+                <button type="button" class="btn btn-primary text-right btn-md" data-dismiss="modal">Close <i class="fas fa-map-marker-alt ml-1"></i></button>
+
+            </div>
+
+        </div>
+        <!--/.Content-->
+
+    </div>
+</div>
+<!--Modal: Name-->
 
 <script>
     $(".nav .nav-link").on("click", function(){
         $(".nav").find(".active").removeClass("active");
         $(this).addClass("active");
     });
-</script>
-<script type="text/javascript" src="./resources/plugins/jquery-3.2.1/js/jquery.min.js"></script>
-<script type="text/javascript" src="./resources/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-
-</body>
-</html>
+    function myFunction() {
+        document.getElementById("myNumber").placeholder = "Amount";
+    }
+    </>
+    </body>
+    </html>

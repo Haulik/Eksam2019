@@ -30,16 +30,13 @@
     .frb-group {
         margin: 15px 0;
     }
-
     .frb {
         margin-top: 15px;
     }
-
     .frb input[type="radio"]:empty,
     .frb input[type="checkbox"]:empty {
         display: none;
     }
-
     .frb input[type="radio"] ~ label:before,
     .frb input[type="checkbox"] ~ label:before {
         font-family: FontAwesome;
@@ -50,12 +47,10 @@
         left: 15px;
         font-size: 22px;
     }
-
     .frb input[type="radio"]:checked ~ label:before,
     .frb input[type="checkbox"]:checked ~ label:before {
         content: '\f046';
     }
-
     .frb input[type="radio"] ~ label,
     .frb input[type="checkbox"] ~ label {
         position: relative;
@@ -65,66 +60,54 @@
         border-radius: 5px;
         background-color: #f2f2f2;
     }
-
     .frb input[type="radio"] ~ label:focus,
     .frb input[type="radio"] ~ label:hover,
     .frb input[type="checkbox"] ~ label:focus,
     .frb input[type="checkbox"] ~ label:hover {
         box-shadow: 0px 0px 3px #333;
     }
-
     .frb input[type="radio"]:checked ~ label,
     .frb input[type="checkbox"]:checked ~ label {
         color: #fafafa;
     }
-
     .frb input[type="radio"]:checked ~ label,
     .frb input[type="checkbox"]:checked ~ label {
         background-color: #f2f2f2;
     }
-
     .frb.frb-default input[type="radio"]:checked ~ label,
     .frb.frb-default input[type="checkbox"]:checked ~ label {
         color: #333;
     }
-
     .frb.frb-primary input[type="radio"]:checked ~ label,
     .frb.frb-primary input[type="checkbox"]:checked ~ label {
         background-color: #337ab7;
     }
-
     .frb.frb-success input[type="radio"]:checked ~ label,
     .frb.frb-success input[type="checkbox"]:checked ~ label {
         background-color: #5cb85c;
     }
-
     .frb.frb-info input[type="radio"]:checked ~ label,
     .frb.frb-info input[type="checkbox"]:checked ~ label {
         background-color: #5bc0de;
     }
-
     .frb.frb-warning input[type="radio"]:checked ~ label,
     .frb.frb-warning input[type="checkbox"]:checked ~ label {
         background-color: #f0ad4e;
     }
-
     .frb.frb-danger input[type="radio"]:checked ~ label,
     .frb.frb-danger input[type="checkbox"]:checked ~ label {
         background-color: #d9534f;
     }
-
     .frb input[type="radio"]:empty ~ label span,
     .frb input[type="checkbox"]:empty ~ label span {
         display: inline-block;
     }
-
     .frb input[type="radio"]:empty ~ label span.frb-title,
     .frb input[type="checkbox"]:empty ~ label span.frb-title {
         font-size: 16px;
         font-weight: 700;
         margin: 5px 5px 5px 50px;
     }
-
     .frb input[type="radio"]:empty ~ label span.frb-description,
     .frb input[type="checkbox"]:empty ~ label span.frb-description {
         font-weight: normal;
@@ -132,12 +115,10 @@
         color: #999;
         margin: 5px 5px 5px 50px;
     }
-
     .frb input[type="radio"]:empty:checked ~ label span.frb-description,
     .frb input[type="checkbox"]:empty:checked ~ label span.frb-description {
         color: #fafafa;
     }
-
     .frb.frb-default input[type="radio"]:empty:checked ~ label span.frb-description,
     .frb.frb-default input[type="checkbox"]:empty:checked ~ label span.frb-description {
         color: #999;
@@ -146,30 +127,30 @@
 
 <!-- Navigation -->
 <div>
-<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top"  >
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="http://localhost:8080/logo.png" width="15%"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse navbarCollapse" id="navbarResponsive">
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/#About">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/#Serv">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/#Team">Team</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/#Con">Connect</a>
-                </li>
-            </ul>
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top"  >
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="http://localhost:8080/logo.png" width="15%"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse navbarCollapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#About">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#Serv">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#Team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#Con">Connect</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 </div>
 
 <div class="container">
@@ -189,17 +170,17 @@
 <div class="container">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <h3 class="text-center title-center">These are the available time-slots.</h3>
-    <div class="row">
-        <ul class="ds-btn" th:each="bookings: ${bookings}">
-            <li class="row">
-                <a class="btn btn-lg btn-primary" th:href="${'bookDetails/'+bookings.id}">
-                    <i class="fa fa-clock-o pull-left"></i>
-                    <span class="frb-title" th:text="${bookings.bookingStart}"></span><br/>
-                    <small><span class="frb-description pull-right" th:text="${bookings.bookingEnd}"></span></small></a>
+        <div class="row">
+            <ul class="ds-btn" th:each="bookings: ${bookings}">
+                <li class="row">
+                    <a class="btn btn-lg btn-primary" th:href="${'bookDetails/'+bookings.id}">
+                        <i class="fa fa-clock-o pull-left"></i>
+                        <span class="frb-title" th:text="${bookings.bookingStart}"></span><br/>
+                        <small><span class="frb-description pull-right" th:text="${bookings.bookingEnd}"></span></small></a>
 
-            </li>
-        </ul>
-    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 
@@ -272,8 +253,8 @@
         $(this).addClass("active");
     });
 </script>
-    <script type="text/javascript" src="./resources/plugins/jquery-3.2.1/js/jquery.min.js"></script>
-    <script type="text/javascript" src="./resources/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./resources/plugins/jquery-3.2.1/js/jquery.min.js"></script>
+<script type="text/javascript" src="./resources/plugins/bootstrap-3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 </html>
